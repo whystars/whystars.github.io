@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2023/05/26/test/</loc>
+    <loc>http://whystars.github.io/2023/05/26/test/</loc>
     
     <lastmod>2023-05-26</lastmod>
     
@@ -12,7 +12,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>http://whystars.github.io/</loc>
     <lastmod>2023-05-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
