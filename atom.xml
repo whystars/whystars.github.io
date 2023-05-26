@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>吴昊阳的博客</title>
+  
+  <subtitle>why’s blog</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-05-26T10:53:08.183Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>吴昊阳</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://example.com/2023/05/26/test/"/>
+    <id>http://example.com/2023/05/26/test/</id>
+    <published>2023-05-26T10:53:08.000Z</published>
+    <updated>2023-05-26T10:53:08.183Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+</feed>
