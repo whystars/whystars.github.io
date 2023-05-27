@@ -88,14 +88,7 @@
   </url>
   
   <url>
-    <loc>http://whystars.github.io/tags/c/</loc>
-    <lastmod>2023-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://whystars.github.io/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/</loc>
+    <loc>http://whystars.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -109,7 +102,14 @@
   </url>
   
   <url>
-    <loc>http://whystars.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>http://whystars.github.io/tags/c/</loc>
+    <lastmod>2023-05-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://whystars.github.io/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/</loc>
     <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
