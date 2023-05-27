@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'titlefont';
+  font-display: swap;
+  src: url('./titlefont.otf') format("opentype");  
+}

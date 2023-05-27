@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'codefont';
+  font-display: swap;
+  src: url('./hack.ttf') format("truetype");  
+}

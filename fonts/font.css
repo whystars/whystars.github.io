@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'jtfont';
+  font-display: swap;
+  src: url('./font.otf') format("opentype");  
+}
