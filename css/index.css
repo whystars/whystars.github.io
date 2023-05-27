@@ -1488,7 +1488,7 @@ a:hover {
 .site-name,
 #aside-content .author-info__name,
 #aside-content .author-info__description {
-  font-family: titlefont;
+  font-family: jtfont;
 }
 .is-center {
   text-align: center;
