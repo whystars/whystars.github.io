@@ -76,7 +76,7 @@
 
   <url>
     <loc>http://whystars.github.io/</loc>
-    <lastmod>2023-05-28</lastmod>
+    <lastmod>2023-06-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,42 +84,42 @@
   
   <url>
     <loc>http://whystars.github.io/tags/%E6%B3%A8%E5%86%8C%E8%A1%A8/</loc>
-    <lastmod>2023-05-28</lastmod>
+    <lastmod>2023-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://whystars.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2023-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://whystars.github.io/tags/dfs/</loc>
-    <lastmod>2023-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://whystars.github.io/tags/c/</loc>
-    <lastmod>2023-05-28</lastmod>
+    <lastmod>2023-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://whystars.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2023-05-28</lastmod>
+    <lastmod>2023-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://whystars.github.io/tags/dfs/</loc>
+    <lastmod>2023-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://whystars.github.io/tags/c/</loc>
+    <lastmod>2023-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://whystars.github.io/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/</loc>
-    <lastmod>2023-05-28</lastmod>
+    <lastmod>2023-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
