@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>why</title>
+  <title>whystars</title>
   
-  <subtitle>whystars blog</subtitle>
-  <link href="http://whystars.github.io/atom.xml" rel="self"/>
+  <subtitle>blog</subtitle>
+  <link href="https://whystars.github.io/atom.xml" rel="self"/>
   
-  <link href="http://whystars.github.io/"/>
+  <link href="https://whystars.github.io/"/>
   <updated>2024-02-02T06:57:54.809Z</updated>
-  <id>http://whystars.github.io/</id>
+  <id>https://whystars.github.io/</id>
   
   <author>
     <name>whystars</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>流浪地球2（4K、HD高清）</title>
-    <link href="http://whystars.github.io/posts/2307715541.html"/>
-    <id>http://whystars.github.io/posts/2307715541.html</id>
+    <link href="https://whystars.github.io/posts/2307715541.html"/>
+    <id>https://whystars.github.io/posts/2307715541.html</id>
     <published>2023-06-10T06:48:01.000Z</published>
     <updated>2024-02-02T06:57:54.809Z</updated>
     
@@ -36,14 +36,14 @@
     
     
     
-    <category term="电影" scheme="http://whystars.github.io/tags/%E7%94%B5%E5%BD%B1/"/>
+    <category term="电影" scheme="https://whystars.github.io/tags/%E7%94%B5%E5%BD%B1/"/>
     
   </entry>
   
   <entry>
     <title>struct结构体</title>
-    <link href="http://whystars.github.io/posts/848889115.html"/>
-    <id>http://whystars.github.io/posts/848889115.html</id>
+    <link href="https://whystars.github.io/posts/848889115.html"/>
+    <id>https://whystars.github.io/posts/848889115.html</id>
     <published>2023-05-28T09:07:14.000Z</published>
     <updated>2024-02-02T06:58:30.796Z</updated>
     
@@ -58,14 +58,14 @@
     
     
     
-    <category term="c++" scheme="http://whystars.github.io/tags/c/"/>
+    <category term="c++" scheme="https://whystars.github.io/tags/c/"/>
     
   </entry>
   
   <entry>
     <title>映像劫持</title>
-    <link href="http://whystars.github.io/posts/1122620100.html"/>
-    <id>http://whystars.github.io/posts/1122620100.html</id>
+    <link href="https://whystars.github.io/posts/1122620100.html"/>
+    <id>https://whystars.github.io/posts/1122620100.html</id>
     <published>2023-05-27T06:06:33.000Z</published>
     <updated>2024-02-02T06:57:48.115Z</updated>
     
@@ -80,16 +80,16 @@
     
     
     
-    <category term="注册表" scheme="http://whystars.github.io/tags/%E6%B3%A8%E5%86%8C%E8%A1%A8/"/>
+    <category term="注册表" scheme="https://whystars.github.io/tags/%E6%B3%A8%E5%86%8C%E8%A1%A8/"/>
     
-    <category term="技术" scheme="http://whystars.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://whystars.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title>c++高精度减法</title>
-    <link href="http://whystars.github.io/posts/599784019.html"/>
-    <id>http://whystars.github.io/posts/599784019.html</id>
+    <link href="https://whystars.github.io/posts/599784019.html"/>
+    <id>https://whystars.github.io/posts/599784019.html</id>
     <published>2023-05-27T05:58:52.000Z</published>
     <updated>2024-02-02T06:57:42.553Z</updated>
     
@@ -104,16 +104,16 @@
     
     
     
-    <category term="c++" scheme="http://whystars.github.io/tags/c/"/>
+    <category term="c++" scheme="https://whystars.github.io/tags/c/"/>
     
-    <category term="高精度" scheme="http://whystars.github.io/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
+    <category term="高精度" scheme="https://whystars.github.io/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
     
   </entry>
   
   <entry>
     <title>dfs回溯框架</title>
-    <link href="http://whystars.github.io/posts/65824488.html"/>
-    <id>http://whystars.github.io/posts/65824488.html</id>
+    <link href="https://whystars.github.io/posts/65824488.html"/>
+    <id>https://whystars.github.io/posts/65824488.html</id>
     <published>2023-05-27T05:50:37.000Z</published>
     <updated>2024-02-02T06:57:30.920Z</updated>
     
@@ -128,16 +128,16 @@
     
     
     
-    <category term="dfs" scheme="http://whystars.github.io/tags/dfs/"/>
+    <category term="dfs" scheme="https://whystars.github.io/tags/dfs/"/>
     
-    <category term="c++" scheme="http://whystars.github.io/tags/c/"/>
+    <category term="c++" scheme="https://whystars.github.io/tags/c/"/>
     
   </entry>
   
   <entry>
     <title>博客的创建与撰写</title>
-    <link href="http://whystars.github.io/posts/840339277.html"/>
-    <id>http://whystars.github.io/posts/840339277.html</id>
+    <link href="https://whystars.github.io/posts/840339277.html"/>
+    <id>https://whystars.github.io/posts/840339277.html</id>
     <published>2023-05-26T12:44:29.000Z</published>
     <updated>2024-02-02T06:59:54.345Z</updated>
     
@@ -152,7 +152,7 @@
     
     
     
-    <category term="博客" scheme="http://whystars.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="https://whystars.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
