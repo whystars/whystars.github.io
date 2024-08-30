@@ -1,5 +1,6 @@
 #web_bg {
-  background: -webkit-linear-gradient(
+  background-image: url(/img/default.jpg);
+  /* background: -webkit-linear-gradient(
     0deg,
     rgba(247, 149, 51, 0.2) 0,
     rgba(243, 112, 85, 0.2) 15%,
@@ -53,5 +54,5 @@
     rgba(16, 152, 173, 0.2) 72%,
     rgba(7, 179, 155, 0.2) 86%,
     rgba(109, 186, 130, 0.2) 100%
-  );
+  ); */
 }
