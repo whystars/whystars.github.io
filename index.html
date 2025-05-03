@@ -1,14 +1,15 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>whystars - blog</title><meta name="author" content="whystars"><meta name="copyright" content="whystars"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="whystars&#39; blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="whystars">
-<meta property="og:url" content="https://whystars.github.io/index.html">
+<meta property="og:url" content="https://whystars.cn/index.html">
 <meta property="og:site_name" content="whystars">
 <meta property="og:description" content="whystars&#39; blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://whystars.github.io/img/favicon.png">
+<meta property="og:image" content="https://whystars.cn/img/favicon.png">
 <meta property="article:author" content="whystars">
+<meta property="article:tag" content="C++,学生">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://whystars.github.io/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://whystars.github.io/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://whystars.cn/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://whystars.cn/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
@@ -53,7 +54,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-08-30 15:13:37'
+  postUpdate: '2025-05-03 14:13:15'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -177,53 +178,336 @@
 document.addEventListener('pjax:send', () => {
   Pace.restart()
 })
-</script><link rel="stylesheet" href="/css/why_change.css"/><script src="https://unpkg.com/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="whystars"><span class="site-name">whystars</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></nav><div id="site-info"><h1 id="site-title">whystars</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2307715541.html" title="流浪地球2（4K、HD高清）">流浪地球2（4K、HD高清）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-10T06:48:01.000Z" title="发表于 2023-06-10 14:48:01">2023-06-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:54.809Z" title="更新于 2024-02-02 14:57:54">2024-02-02</time></span></div><div class="content">流浪地球2 电影资源简介
+</script><link rel="stylesheet" href="/css/why_change.css"/><script src="https://unpkg.com/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/favicon.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="whystars"><span class="site-name">whystars</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></nav><div id="site-info"><h1 id="site-title">whystars</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/b0e0.html" title="L8.5 - 数学专题：杨辉三角的编程妙用（拓展）">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:50.000Z" title="发表于 2025-05-03 12:09:50">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:08:17.647Z" title="更新于 2025-05-03 13:08:17">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）
 
-《流浪地球2》是由郭帆执导，吴京、李雪健、沙溢、宁理、王智、朱颜曼滋领衔主演、刘德华特别演出的科幻灾难电影。该片于2023年1月22日在中国大陆及北美地区同步上映；2023年2月9日在中国港澳地区上映。该片以提出计划将建造1万座行星发动机的时代为故事背景，讲述了“太阳危机”即将来袭，世界陷入一片恐慌之中，万座行星发动机正在建造中，人类将面临末日灾难与生命存续的双重挑战故事。2023年6月2日消息，《流浪地球》官方宣布，《流浪地球 2》将在维也纳进行联合国特别放映。
-下载链接
+一、杨辉三角是什么？
+1. 数字金字塔
+外观特点：
+每一行数字左右对称，像金字塔一样逐层增加
+第n行有n个数字，首尾都是1，中间数字=上层两数之和
+示例（前5行）：
+12345	1     1 1    1 2 1   1 3 3 1  1 4 6 4 1
 
-huang1111云盘 下载链接阿里云盘（比较麻烦） 下载链接阿里云盘下载之后 查看教程
-阿里云盘下载后观看教程
+二、用C++生成杨辉三角
+1. 二维数组生成法
+1234567891011121314151617181920212223242526#include &lt;iostream&gt;#include &lt;vector&gt;using namespace std;vector&lt;vector&lt;int&gt;&gt; generatePascal(int n) &#123;    vector&lt;vector&lt;int&gt;&gt; triangle(n);    for(int i=0; i&lt;n; i++) &#123;        triangle[i].resize(i+1, 1); // 每行初始化为1                // ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/49c9.html" title="L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:49.000Z" title="发表于 2025-05-03 12:09:49">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:08:14.609Z" title="更新于 2025-05-03 13:08:14">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）
 
+🎯 教学目标
 
-请下载这两个文件后打开 “阿里云盘文件伪装&amp;解除v1.1“
-选择 “下载后解析“
-点击 “选择文件“
-最后点击 “点击解析“ 按钮，等待完成即可
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/848889115.html" title="struct结构体">struct结构体</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-28T09:07:14.000Z" title="发表于 2023-05-28 17:07:14">2023-05-28</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-12T07:26:15.117Z" title="更新于 2024-05-12 15:26:15">2024-05-12</time></span></div><div class="content">struct结构体结构1234567891011#include &lt;bits/stdc++.h&gt;using namespace std;struct 结构体名称&#123;    结构体变量;&#125;;//一定要注意分号int main()&#123;    你的结构体名称 变量名;    变量名.你的结构体内的变量名称或结构体内的函数名称;//调用    return 0;&#125;
-示例12345678910111213141516171819#include &lt;bits/stdc++.h&gt;using namespace std;struct student&#123;    string name;    int h,w;&#125;;//一定要注意分号int main()&#123;    student stu[10];    for(int i=0;i&lt;10;i++)&#123;        cin&gt;&gt;stu[i].name&gt;&gt;stu[i].h&gt;&gt;stu[i].w;        //依次输入姓名、身 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1122620100.html" title="映像劫持">映像劫持</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-27T06:06:33.000Z" title="发表于 2023-05-27 14:06:33">2023-05-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:48.115Z" title="更新于 2024-02-02 14:57:48">2024-02-02</time></span></div><div class="content">映像劫持要点
-劫持路径:计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options
-
-添加劫持程序
-添加项，重命名为劫持程序名称
-
-设置劫持程序
-添加Debugger字符串
-
-添加想运行的程序
-将字符串的值设为你想运行的程序（绝对路径）,可以留空
-
-完成
-然后再运行被劫持的程序，你就会发现打开了其他程序，而没有打开被劫持的程序
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/599784019.html" title="c++高精度减法">c++高精度减法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-27T05:58:52.000Z" title="发表于 2023-05-27 13:58:52">2023-05-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:42.553Z" title="更新于 2024-02-02 14:57:42">2024-02-02</time></span></div><div class="content">高精度减法123456789101112131415161718192021222324252627282930313233#include &lt;bits/stdc++.h&gt;#include &lt;string&gt;using namespace std;int a[10001],b[10001],c[10001];int main()&#123;	string sta,stb;	int la,lb,lc,i,j,g=0;	cin&gt;&gt;sta&gt;&gt;stb;	la=sta.size();	lb=stb.size();	if(la&lt;lb || (la==lb &amp;&amp; sta&lt;stb))&#123;		swap(sta,stb);		swap(la,lb);		cout&lt;&lt;&quot;-&quot;;	&#125;	lc=la;	for(i=0;i&lt;la;i++) a[i]=sta[la-i-1]-&#x27;0&#x27;;	for(i=0;i&lt;lb;i++) b[i]=stb[lb-i-1]-&#x27; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/65824488.html" title="dfs回溯框架">dfs回溯框架</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-27T05:50:37.000Z" title="发表于 2023-05-27 13:50:37">2023-05-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:30.920Z" title="更新于 2024-02-02 14:57:30">2024-02-02</time></span></div><div class="content">dfs回溯框架1234567891011121314151617181920212223#include &lt;bits/stdc++.h&gt;...using namesapce std;...void dfs(参数)&#123;    for(范围)&#123;        if(找到解或结束了)&#123;            ...        &#125;        else if(在范围内)&#123;            做标记;            dfs(传参);            抹除标记;        &#125;    &#125;&#125;int main()&#123;    ...    dfs(传参);    ...    return 0;&#125;
-
-“. . .”为其他代码部分
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/840339277.html" title="博客的创建与撰写">博客的创建与撰写</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-26T12:44:29.000Z" title="发表于 2023-05-26 20:44:29">2023-05-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:59:54.345Z" title="更新于 2024-02-02 14:59:54">2024-02-02</time></span></div><div class="content">博客的创建与撰写blog问题解决
-butterfly出现页面出现extends includes/layout.pug...的解决方法:1npm install --save hexo-renderer-jade hexo-generator-feed hexo-generator-sitemap hexo-browsersync hexo-generator-archive
-推送到GitHub Pages
+掌握二分查找核心原理：理解边界控制与时间复杂度
+精通排列组合生成算法：实现高效无重复的排列组合
+理解质数筛法机制：掌握埃氏筛与欧拉筛的优化方法
+开发高效算法思维：应对复杂问题的解决方案
 
 
-首先安装hexo-deployer-git：1npm install hexo-deployer-git --save
-然后修改blog目录下的_config.yml 文件末尾的 Deploy 部分，修改成如下：1234deploy:  type: &#x27;git&#x27;  repository: git@github.com:用户名/用户名.github.io.git  branch: main
-完成后运行 hexo d 将网站上传部署到 GitHub Pages。
+📚 核心算法原理
+一、二分查找（Binary Search）
+1. 算法框架
+12345678910111213template&lt;typename T&gt;int binarySearch(const vector&lt;T&gt;&amp; arr, T target) &#123;    int left = 0, right = arr.size() - 1;  // 闭区间        while(left &lt;= right) &#123;  // 终止条件        int mid = left + (right - left)/2;  // 防止溢出                if(arr[mid] == target) return mid;        if(arr[mid]  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/4487.html" title="L8.3 - 堆栈内存分配深度解析（拓展）">L8.3 - 堆栈内存分配深度解析（拓展）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:09:07.964Z" title="更新于 2025-05-03 14:09:07">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L8.3 - 堆栈内存分配深度解析（拓展）
+
+🎯 教学目标
+
+掌握内存布局原理：理解栈、堆、静态区的存储机制
+精通动态内存管理：深入理解new/delete的底层实现
+规避内存操作陷阱：识别常见内存错误模式
+优化内存使用效率：掌握内存池等高级技巧
 
 
-blog技巧制作blog流程：
-生成初始blog页面1hexo init blog
-然后进入blo ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">whystars</div><div class="author-info__description">whystars' blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whystars"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的blog!</div></div><div class="sticky_layout"><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.15em; color: rgb(166, 152, 25)">博客</a><a href="/tags/%E6%B3%A8%E5%86%8C%E8%A1%A8/" style="font-size: 1.15em; color: rgb(132, 153, 164)">注册表</a><a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.15em; color: rgb(75, 80, 149)">技术</a><a href="/tags/dfs/" style="font-size: 1.15em; color: rgb(190, 160, 59)">dfs</a><a href="/tags/c/" style="font-size: 1.45em; color: rgb(67, 12, 168)">c++</a><a href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" style="font-size: 1.15em; color: rgb(148, 60, 2)">高精度</a><a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 1.15em; color: rgb(141, 185, 131)">电影</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">2023年06月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">2023年05月</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-05-25T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">1.2k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-08-30T07:13:36.927Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By whystars</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Made with ❤️ by whystars</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-home"><i class="fa-solid fa-house"></i></div></div><div class="rightMenu-group rightMenu-line"><div class="rightMenu-item" id="menu-readmode"><i class="fa-solid fa-book-open"></i><span>阅读模式</span><script>document.getElementById('menu-readmode').addEventListener('click', () => {
+📚 核心知识点
+一、内存区域全景图
+
+
+  graph TD
+    A[内存布局] --&gt; B[栈区 Stack]
+    A --&gt; C[堆区 Heap]
+    A --&gt; D[静态&#x2F;全局区]
+    A --&gt; E[常量区]
+    A --&gt; F[代码区]
+    
+    B --&gt; B1(自动管理)
+    B --&gt; B2(LIFO结构)
+    B --&gt; B3(大小受限)
+    
+    C --&gt; C1(手动管理)
+    C --&gt; C2(随机访问)
+    C --&gt; C3(大容量)
+  
+
+
+二、栈内存 vs 堆内存对比
+
+
+
+特性
+栈内存
+堆内存
+
+
+
+
+管理方式
+编译器自动管理
+程序员手动管理
+
+
+分配速度
+纳秒级（移动栈指针 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/555f.html" title="L8.2 - 递归&amp;指针深度解析（拓展）">L8.2 - 递归&amp;指针深度解析（拓展）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:47.000Z" title="发表于 2025-05-03 12:09:47">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:08:07.204Z" title="更新于 2025-05-03 13:08:07">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L8.2 - 递归&amp;指针深度解析（拓展）
+
+🎯 教学目标
+
+掌握递归核心原理：理解调用栈机制与递归三要素
+精通指针操作技巧：从内存层面理解程序运行机制
+规避递归与指针陷阱：识别常见错误模式
+开发复杂数据结构：实现链表、树等递归结构
+
+
+📚 核心知识点
+一、递归核心原理
+1. 递归三要素
+12345678910int factorial(int n) &#123;    // 终止条件    if(n == 0) return 1;          // 要素1：基准情形        // 递归调用    int prev = factorial(n-1);   // 要素2：递归推进        // 状态合并    return n * prev;             // 要素3：问题分解&#125;
+
+二、指针操作全景
+1. 指针类型体系
+
+
+
+类型
+示例
+内存示意图
+
+
+
+
+裸指针
+int* p = &amp;a;
+[a地址] → 42
+
+
+双指针
+int** pp = &amp;p;
+[pp地址] → [p地址] → 42
+
+
+函数指针
+void (*f ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/accd.html" title="L8.1 - 位运算深度解析（拓展）">L8.1 - 位运算深度解析（拓展）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:10:41.039Z" title="更新于 2025-05-03 14:10:41">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L8.1 - 位运算深度解析（拓展）
+
+🎯 教学目标
+
+掌握位运算的底层原理：理解二进制位的操作机制
+熟练应用位操作技巧：提升算法效率与内存利用率
+规避常见位操作陷阱：识别并修复典型错误
+开发位运算思维：将位操作融入程序设计
+
+
+📚 核心知识点
+一、基础位运算符表
+
+
+
+运算符
+名称
+示例
+二进制运算说明
+应用场景
+
+
+
+
+&amp;
+按位与
+0b1100 &amp; 0b1010 = 0b1000
+同1为1
+掩码操作、奇偶判断
+
+
+|
+按位或
+0b1100 | 0b1010 = 0b1110
+有1为1
+位标记合并
+
+
+^
+按位异或
+0b1100 ^ 0b1010 = 0b0110
+不同为1
+数值交换、加密
+
+
+~
+按位取反
+~0b0011 = 0b1100
+0变1，1变0
+补码运算
+
+
+&lt;&lt;
+左移
+0b0011 &lt;&lt; 2 = 0b1100
+高位丢弃，低位补0
+快速乘2^n
+
+
+&gt;&gt;
+右移
+0b1100 &gt;&gt; 2 = 0b0011
+低位丢弃，高位补符号位
+快速除2^n
+
+
+
+
+二、位操作进阶技巧
+1. 状态压缩（State Compr ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/940c.html" title="L8 - 高阶算法与数论专题">L8 - 高阶算法与数论专题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:45.000Z" title="发表于 2025-05-03 12:09:45">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:07:19.466Z" title="更新于 2025-05-03 14:07:19">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L8 - 高阶算法与数论专题
+
+🎯 教学目标
+
+掌握二分答案的复杂场景应用
+建立递推思维解决组合数学问题
+实现高效质数筛法优化算法性能
+融合多知识点解决综合性难题
+
+
+🔑 核心知识点
+一、二分答案升级（复杂条件验证）
+典型问题：最小化最大值问题
+模板代码：
+1234567double left=MIN, right=MAX;for(int i=0; i&lt;100; i++) &#123; // 精度控制替代传统终止条件    double mid = (left + right) / 2;    if(check(mid)) right = mid; // check函数复杂度可突破    else left = mid;&#125;// 最终答案保留4位小数：printf(&quot;%.4f&quot;, left);
+应用场景：
+
+木棍切割最大长度
+最小化机器人移动距离
+
+
+二、递推与组合数学
+1. 递推公式推导
+1234// 斐波那契数列f[0] = 0, f[1] = 1;for(int i=2; i&lt;=n; i++)     f[i] = f[i-1] + f ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/23f1.html" title="L7 - 算法优化与高效问题求解">L7 - 算法优化与高效问题求解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:44.000Z" title="发表于 2025-05-03 12:09:44">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:06:19.291Z" title="更新于 2025-05-03 14:06:19">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L7 - 算法优化与高效问题求解
+
+🎯 教学目标
+
+掌握时间复杂度分析方法，能估算程序性能并优化算法
+熟练应用前缀和技巧，解决区间统计类问题
+深入理解二分法，实现查找与答案判定双重功能
+构建递归思维模型，学会用记忆化搜索优化重复计算
+
+
+📚 核心知识体系
+一、时间复杂度分析（理论基石）
+123456789// 示例：比较两种算法的耗时差异void algo_O_n(int n) &#123;  // O(n)    for(int i=0; i&lt;n; i++) &#123; /* 操作 */ &#125;&#125;void algo_O_n2(int n) &#123; // O(n²)    for(int i=0; i&lt;n; i++)        for(int j=0; j&lt;n; j++) &#123; /* 操作 */ &#125;&#125;
+复杂度对比表
+
+
+
+数据规模
+O(n)（毫秒）
+O(n²)（毫秒）
+
+
+
+
+n=1e3
+1
+1000
+
+
+n=1e4
+10
+100000
+
+
+
+
+二、前缀和与差分数组（区间处理利器）
+1. 一维前缀和模板
+12 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/dd9a.html" title="L6.1 - 指针与动态内存（拓展）">L6.1 - 指针与动态内存（拓展）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:43.000Z" title="发表于 2025-05-03 12:09:43">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:05:48.817Z" title="更新于 2025-05-03 14:05:48">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L6.1 - 指针与动态内存（拓展）
+🎯 教学目标
+
+掌握指针运算与内存地址操作
+熟练使用new/delete管理动态内存
+理解智能指针的工作原理
+掌握函数指针的高级应用
+预防内存泄漏与悬空指针问题
+
+
+🔑 核心知识点
+1. 指针基础概念
+内存地址可视化模型
+1230x1000 [ 10 ] ← int a = 100x1004 [ 0x1000 ] ← int* p = &amp;a0x1008 [ 0x1004 ] ← int** pp = &amp;p
+指针声明三要素：
+123int* p;        // 声明指针变量p = &amp;a;        // 取地址操作cout &lt;&lt; *p;    // 解引用操作
+指针运算原理
+123456int arr[5] = &#123;10,20,30,40,50&#125;;int* ptr = arr;ptr + 1 → 地址增加sizeof(int)（通常4字节）*(ptr+3) ← 等价于arr[3]ptr++   ← 移动到下一个元素
+
+2. 动态内存管理
+内存分配生命周期图
+1234┌──────── ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/eeb5.html" title="L6 - 算法优化与多维数组">L6 - 算法优化与多维数组</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:42.000Z" title="发表于 2025-05-03 12:09:42">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:01:15.496Z" title="更新于 2025-05-03 14:01:15">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L6 - 算法优化与多维数组
+📚 核心知识模块
+
+
+  graph TB
+    L6[L6 算法与多维数组]
+    L6 --&gt; A[排序算法]
+    L6 --&gt; B[循环优化]
+    L6 --&gt; C[STL函数]
+    L6 --&gt; D[二维数组]
+    
+    A --&gt; A1(冒泡排序)
+    A --&gt; A2(计数排序)
+    A --&gt; A3(算法对比)
+    
+    B --&gt; B1(循环嵌套)
+    B --&gt; B2(流程控制)
+    
+    C --&gt; C1(sort)
+    C --&gt; C2(swap)
+    C --&gt; C3(数学函数)
+    
+    D --&gt; D1(动态创建)
+    D --&gt; D2(矩阵运算)
+&lt;!-- &#96;&#96;&#96; --&gt;
+  
+
+🔥 重点升级内容
+1. 排序算法深度对比
+冒泡排序模板
+123456789101112void bubbleSort(int arr[], int n) & ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/5529.html" title="L5 - 函数与递归">L5 - 函数与递归</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:41.000Z" title="发表于 2025-05-03 12:09:41">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:07:43.782Z" title="更新于 2025-05-03 13:07:43">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L5 - 函数与递归
+🎯 教学目标深化
+
+函数设计原则
+
+单一职责原则（每个函数只做一件事）
+合理控制函数体长度（建议不超过50行）
+避免函数副作用（除非明确需要）
+
+
+递归思维训练
+
+分治思想的实现方式
+递归树分析（用于理解递归执行路径）
+递归与数学归纳法的关系
+
+
+
+
+🔑 核心知识点扩展
+1. 函数定义深度解析
+函数声明与定义的分离
+123456789// mymath.h（头文件）#pragma onceint add(int a, int b); // 声明// mymath.cpp（源文件）#include &quot;mymath.h&quot;int add(int a, int b) &#123; // 定义    return a + b;&#125;
+头文件作用：
+
+提供接口文档
+避免重复定义
+支持模块化编译
+
+默认参数机制
+1234567void printLog(string msg, int level=1) &#123;    cout &lt;&lt; &quot;[&quot; &lt;&lt; level &lt;&lt; &quot;] &quo ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/favicon.png'" alt="avatar"/></div><div class="author-info__name">whystars</div><div class="author-info__description">whystars' blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whystars"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到whystars的blog！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b0e0.html" title="L8.5 - 数学专题：杨辉三角的编程妙用（拓展）">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）</a><time datetime="2025-05-03T04:09:50.000Z" title="发表于 2025-05-03 12:09:50">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/49c9.html" title="L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）</a><time datetime="2025-05-03T04:09:49.000Z" title="发表于 2025-05-03 12:09:49">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4487.html" title="L8.3 - 堆栈内存分配深度解析（拓展）">L8.3 - 堆栈内存分配深度解析（拓展）</a><time datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/555f.html" title="L8.2 - 递归&amp;指针深度解析（拓展）">L8.2 - 递归&amp;指针深度解析（拓展）</a><time datetime="2025-05-03T04:09:47.000Z" title="发表于 2025-05-03 12:09:47">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/accd.html" title="L8.1 - 位运算深度解析（拓展）">L8.1 - 位运算深度解析（拓展）</a><time datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/"><span class="card-category-list-name">知识体系</span><span class="card-category-list-count">14</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/"><span class="card-category-list-name">Level 1</span><span class="card-category-list-count">14</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%B3%A8%E5%86%8C%E8%A1%A8/" style="font-size: 1.15em; color: rgb(66, 110, 38)">注册表</a><a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.15em; color: rgb(11, 61, 33)">技术</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.15em; color: rgb(185, 47, 72)">博客</a><a href="/tags/dfs/" style="font-size: 1.15em; color: rgb(21, 32, 148)">dfs</a><a href="/tags/c/" style="font-size: 1.45em; color: rgb(170, 147, 188)">c++</a><a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 1.15em; color: rgb(52, 153, 157)">电影</a><a href="/tags/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/" style="font-size: 1.3em; color: rgb(190, 137, 116)">知识体系</a><a href="/tags/Level-1/" style="font-size: 1.3em; color: rgb(175, 90, 7)">Level 1</a><a href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" style="font-size: 1.15em; color: rgb(149, 79, 66)">高精度</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">2025年05月</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">2023年06月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">2023年05月</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-05-25T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">18.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-05-03T06:13:14.615Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By whystars</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Made with ❤️ by whystars</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-home"><i class="fa-solid fa-house"></i></div></div><div class="rightMenu-group rightMenu-line"><div class="rightMenu-item" id="menu-readmode"><i class="fa-solid fa-book-open"></i><span>阅读模式</span><script>document.getElementById('menu-readmode').addEventListener('click', () => {
   const $body = document.body
   $body.classList.toggle('read-mode')
   if ($body.classList.contains('read-mode')) {
@@ -273,13 +557,57 @@ e.preventDefault();
   }
 }
 </script><script>function subtitleType () {
-  if (true) {
-    typedJSFn.init(["人生于我,一场豪赌而已。","长风破浪会有时，直挂云帆济沧海。","人有悲欢离合，月有阴晴圆缺，此事古难全。","不知天上宫阙，今夕是何年?","我欲乘风归去，又恐琼楼玉宇，高处不胜寒。"])
-  } else {
-    document.getElementById("subtitle").textContent = "人生于我,一场豪赌而已。"
-  }
+  getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
+    jinrishici.load(result =>{
+      if (true) {
+        const sub = []
+        const content = result.data.content
+        sub.unshift(content)
+        typedJSFn.init(sub)
+      } else {
+        document.getElementById('subtitle').textContent = result.data.content
+      }
+    })
+  })
 }
-typedJSFn.run(subtitleType)</script></div><script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><div class="aplayer no-destroy" data-id="1433584979" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><script src="https://unpkg.com/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+typedJSFn.run(subtitleType)
+</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><div class="aplayer no-destroy" data-id="1433584979" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><script src="https://unpkg.com/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = false;
 POWERMODE.mobile = true;
 document.body.addEventListener('input', POWERMODE);

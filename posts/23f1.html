@@ -1,0 +1,518 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>L7 - 算法优化与高效问题求解 | whystars</title><meta name="author" content="whystars"><meta name="copyright" content="whystars"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="L7 - 算法优化与高效问题求解  🎯 教学目标  掌握时间复杂度分析方法，能估算程序性能并优化算法 熟练应用前缀和技巧，解决区间统计类问题 深入理解二分法，实现查找与答案判定双重功能 构建递归思维模型，学会用记忆化搜索优化重复计算   📚 核心知识体系 一、时间复杂度分析（理论基石） 123456789&#x2F;&#x2F; 示例：比较两种算法的耗时差异void algo_O_n(int n) &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="L7 - 算法优化与高效问题求解">
+<meta property="og:url" content="https://whystars.cn/posts/23f1.html">
+<meta property="og:site_name" content="whystars">
+<meta property="og:description" content="L7 - 算法优化与高效问题求解  🎯 教学目标  掌握时间复杂度分析方法，能估算程序性能并优化算法 熟练应用前缀和技巧，解决区间统计类问题 深入理解二分法，实现查找与答案判定双重功能 构建递归思维模型，学会用记忆化搜索优化重复计算   📚 核心知识体系 一、时间复杂度分析（理论基石） 123456789&#x2F;&#x2F; 示例：比较两种算法的耗时差异void algo_O_n(int n) &amp;#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://whystars.cn/img/favicon.png">
+<meta property="article:published_time" content="2025-05-03T04:09:44.000Z">
+<meta property="article:modified_time" content="2025-05-03T06:06:19.291Z">
+<meta property="article:author" content="whystars">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="Level 1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://whystars.cn/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://whystars.cn/posts/23f1.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: whystars","link":"链接: ","source":"来源: whystars","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'L7 - 算法优化与高效问题求解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-03 14:06:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/mainColor/heoMainColor.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/fonts/hack.css"><link rel="stylesheet" href="/fonts/titlefont.css"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/XMx86jzlQw0brz3/latest/iconfont.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="whystars" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img" style="background-image:url(/img/favicon.png);background-repeat: no-repeat;background-position:center;"></div><div class="loading-image-dot"></div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = 'auto';
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/why_change.css"/><script src="https://unpkg.com/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/favicon.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="whystars"><span class="site-name">whystars</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></nav><div id="post-info"><h1 class="post-title">L7 - 算法优化与高效问题求解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:44.000Z" title="发表于 2025-05-03 12:09:44">2025-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:06:19.291Z" title="更新于 2025-05-03 14:06:19">2025-05-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="L7 - 算法优化与高效问题求解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img gist" style="background-image: url(/img/default.png)"></div><article class="post-content" id="article-container"><h1>L7 - 算法优化与高效问题求解</h1>
+<hr>
+<h2 id="🎯-教学目标">🎯 <strong>教学目标</strong></h2>
+<ol>
+<li><strong>掌握时间复杂度分析方法</strong>，能估算程序性能并优化算法</li>
+<li><strong>熟练应用前缀和技巧</strong>，解决区间统计类问题</li>
+<li><strong>深入理解二分法</strong>，实现查找与答案判定双重功能</li>
+<li><strong>构建递归思维模型</strong>，学会用记忆化搜索优化重复计算</li>
+</ol>
+<hr>
+<h2 id="📚-核心知识体系">📚 <strong>核心知识体系</strong></h2>
+<h3 id="一、时间复杂度分析（理论基石）">一、时间复杂度分析（理论基石）</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例：比较两种算法的耗时差异</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">algo_O_n</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;  <span class="comment">// O(n)</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123; <span class="comment">/* 操作 */</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">algo_O_n2</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123; <span class="comment">// O(n²)</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;n; j++) &#123; <span class="comment">/* 操作 */</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>复杂度对比表</strong></p>
+<table>
+<thead>
+<tr>
+<th>数据规模</th>
+<th>O(n)（毫秒）</th>
+<th>O(n²)（毫秒）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n=1e3</td>
+<td>1</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>n=1e4</td>
+<td>10</td>
+<td>100000</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="二、前缀和与差分数组（区间处理利器）">二、前缀和与差分数组（区间处理利器）</h3>
+<h4 id="1-一维前缀和模板">1. 一维前缀和模板</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">preSum</span><span class="params">(nums.size()+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) </span><br><span class="line">    preSum[i+<span class="number">1</span>] = preSum[i] + nums[i];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询区间[a,b]和：preSum[b+1] - preSum[a]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-二维前缀和应用">2. 二维前缀和应用</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 矩阵区域和计算</span></span><br><span class="line">sum = preSum[x2][y2] - preSum[x1<span class="number">-1</span>][y2] </span><br><span class="line">      - preSum[x2][y1<span class="number">-1</span>] + preSum[x1<span class="number">-1</span>][y1<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、二分法双模式（查找与答案判定）">三、二分法双模式（查找与答案判定）</h3>
+<h4 id="1-经典二分查找">1. 经典二分查找</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">binarySearch</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> left=<span class="number">0</span>, right=nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right) &#123;</span><br><span class="line">        <span class="type">int</span> mid = left + (right-left)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &lt; target) left = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> right = mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-二分答案框架">2. 二分答案框架</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">findMaxValue</span><span class="params">(<span class="type">int</span> maxLimit)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> left=<span class="number">0</span>, right=maxLimit;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">        <span class="type">int</span> mid = (left + right + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>; <span class="comment">// 取右中位数</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">check</span>(mid)) left = mid;  <span class="comment">// check函数验证答案可行性</span></span><br><span class="line">        <span class="keyword">else</span> right = mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、递归与记忆化搜索（性能飞跃）">四、递归与记忆化搜索（性能飞跃）</h3>
+<h4 id="1-递归三要素实现">1. 递归三要素实现</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fibonacci</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;                <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">fibonacci</span>(n<span class="number">-1</span>) + <span class="built_in">fibonacci</span>(n<span class="number">-2</span>); <span class="comment">// 递归公式</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-记忆化搜索优化">2. 记忆化搜索优化</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; memo;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fibMemo</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">if</span>(memo.<span class="built_in">count</span>(n)) <span class="keyword">return</span> memo[n];</span><br><span class="line">    <span class="keyword">return</span> memo[n] = <span class="built_in">fibMemo</span>(n<span class="number">-1</span>) + <span class="built_in">fibMemo</span>(n<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>性能对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>计算fib(40)时间</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通递归</td>
+<td>＞60秒</td>
+<td>O(2ⁿ)</td>
+</tr>
+<tr>
+<td>记忆化搜索</td>
+<td>＜1毫秒</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="🧩-综合应用案例">🧩 <strong>综合应用案例</strong></h2>
+<h3 id="山脉数组查找目标值（融合二分与递归）">山脉数组查找目标值（融合二分与递归）</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">findInMountainArray</span><span class="params">(<span class="type">int</span> target, MountainArray &amp;mountainArr)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 步骤1：二分查找峰值点</span></span><br><span class="line">    <span class="type">int</span> peak = <span class="built_in">findPeak</span>(mountainArr);</span><br><span class="line">    <span class="comment">// 步骤2：左半区升序二分</span></span><br><span class="line">    <span class="type">int</span> leftRes = <span class="built_in">binarySearch</span>(mountainArr, <span class="number">0</span>, peak, target, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">if</span>(leftRes != <span class="number">-1</span>) <span class="keyword">return</span> leftRes;</span><br><span class="line">    <span class="comment">// 步骤3：右半区降序二分</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">binarySearch</span>(mountainArr, peak+<span class="number">1</span>, mountainArr.<span class="built_in">length</span>()<span class="number">-1</span>, target, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="🏋️-配套训练体系">🏋️ <strong>配套训练体系</strong></h2>
+<h3 id="1-时间复杂度分析训练">1. 时间复杂度分析训练</h3>
+<p><strong>题目1：基础复杂度判定</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请分析以下代码的时间复杂度</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func1</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">1000</span>; i++) a++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func2</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i+=<span class="number">2</span>) </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func3</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i*=<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;i; j++) </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>题目2：算法对比决策</strong><br>
+假设计算机每秒处理1e6次操作，当n=1e5时：</p>
+<ul>
+<li>算法A：时间复杂度O(n√n)，需要预处理1秒</li>
+<li>算法B：时间复杂度O(n²)，无需预处理<br>
+应选择哪个算法？给出数学依据</li>
+</ul>
+<hr>
+<h3 id="2-前缀和实战题单">2. 前缀和实战题单</h3>
+<p><strong>题目1：子数组异或查询</strong>（LeetCode 1310）<br>
+» 给定数组，处理多个查询<code>[i,j]</code>，返回从i到j的异或结果<br>
+» 关键技巧：利用异或前缀性质<code>preXor[j+1] ^ preXor[i]</code></p>
+<p><strong>题目2：航班预订统计</strong>（LeetCode 1109）<br>
+» 处理n个航班的预订记录<code>[first, last, seats]</code>，返回每日座位数<br>
+» 核心解法：差分数组+前缀和还原</p>
+<p><strong>题目3：最大子矩阵</strong>（LeetCode 面试题17.24）<br>
+» 给定二维矩阵，找出元素和最大的子矩阵<br>
+» 高阶技巧：二维前缀和压缩+一维最大子数组转化</p>
+<hr>
+<h3 id="3-二分法专项训练">3. 二分法专项训练</h3>
+<p><strong>题目1：寻找峰值</strong>（LeetCode 162）<br>
+» 数组可能包含多个峰值，返回任意一个峰值的索引<br>
+» 思维突破：比较mid与mid+1决定搜索方向</p>
+<p><strong>题目2：H指数 II</strong>（LeetCode 275）<br>
+» 给定学者论文被引次数的升序数组，计算其H指数<br>
+» 判定条件设计：<code>citations[mid] &gt;= n - mid</code></p>
+<p><strong>题目3：分割数组的最大值</strong>（LeetCode 410）<br>
+» 将数组分割为m个连续子数组，最小化最大子数组和<br>
+» 答案二分法典型应用：验证给定最大值是否可行</p>
+<hr>
+<h3 id="4-记忆化搜索挑战">4. 记忆化搜索挑战</h3>
+<p><strong>题目1：带障碍的路径统计</strong>（LeetCode 63 改编）<br>
+» 网格中存在障碍物，求从左上角到右下角的路径数（允许→和↓移动）<br>
+» 进阶条件：若路径必须经过某特定点，如何修改记忆化策略</p>
+<p><strong>题目2：硬币组合问题</strong>（LeetCode 518 改编）<br>
+» 给定不同面额的硬币和总金额，求凑成金额的硬币组合数<br>
+» 空间优化：如何将二维记忆化压缩为一维DP</p>
+<p><strong>题目3：正则表达式匹配</strong>（LeetCode 10）<br>
+» 实现支持<code>.</code>和<code>*</code>的正则表达式匹配<br>
+» 记忆化技巧：用哈希表记录(i,j)位置的匹配结果</p>
+<hr>
+<h2 id="🧑💻-训练指导建议">🧑💻 <strong>训练指导建议</strong></h2>
+<ol>
+<li><strong>复杂度分析</strong>：使用<strong>主定理</strong>处理递归式，对比不同阶的增长曲线图</li>
+<li><strong>前缀和题单</strong>：先手算推导矩阵区域和公式，再转化为代码实现</li>
+<li><strong>二分训练</strong>：所有题目先用<strong>闭区间写法</strong>实现，再改为<strong>左闭右开</strong>对比差异</li>
+<li><strong>记忆化搜索</strong>：先用树状图分析递归展开过程，再添加记忆化剪枝</li>
+</ol>
+<hr>
+<h2 id="📝-学习路径导图">📝 <strong>学习路径导图</strong></h2>
+<!-- ```mermaid -->
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  graph LR
+A[时间复杂度] --&gt; B[前缀和&#x2F;差分]
+A --&gt; C[二分法]
+B --&gt; D[综合应用]
+C --&gt; D
+D --&gt; E[递归]
+E --&gt; F[记忆化搜索]
+F --&gt; G[动态规划基础]
+  </pre></div>
+<!-- ``` -->
+</article><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="本文为原创文章，著作权归whystars所有">原创</a><a class="post-copyright-title" href="https://whystars.cn/posts/23f1.html"><span>L7 - 算法优化与高效问题求解</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"></span><a class="link" href="https://whystars.cn">whystars</a></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a class="link" href="https://whystars.cn/posts/23f1.html">https://whystars.cn/posts/23f1.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">转载前请认真阅读本站 <a href="/agreement">版权协议</a>，文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" > CC BY-NC-SA 4.0 许可协议</a></span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/c/">c++</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><a class="post-meta__tags" href="/tags/Level-1/">Level 1</a></div><div class="post_share"><div class="social-share" data-image="/img/favicon.png" data-sites="facebook,twitter,wechat,qq,weibo"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/favicon.png'" alt="avatar"/></div><div class="author-info__name">whystars</div><div class="author-info__description">whystars' blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whystars"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到whystars的blog！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">L7 - 算法优化与高效问题求解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%95%99%E5%AD%A6%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">🎯 教学目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">📚 核心知识体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%EF%BC%88%E7%90%86%E8%AE%BA%E5%9F%BA%E7%9F%B3%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">一、时间复杂度分析（理论基石）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84%EF%BC%88%E5%8C%BA%E9%97%B4%E5%A4%84%E7%90%86%E5%88%A9%E5%99%A8%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">二、前缀和与差分数组（区间处理利器）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%80%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1. 一维前缀和模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2. 二维前缀和应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BA%8C%E5%88%86%E6%B3%95%E5%8F%8C%E6%A8%A1%E5%BC%8F%EF%BC%88%E6%9F%A5%E6%89%BE%E4%B8%8E%E7%AD%94%E6%A1%88%E5%88%A4%E5%AE%9A%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">三、二分法双模式（查找与答案判定）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BB%8F%E5%85%B8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1. 经典二分查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2. 二分答案框架</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%80%92%E5%BD%92%E4%B8%8E%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2%EF%BC%88%E6%80%A7%E8%83%BD%E9%A3%9E%E8%B7%83%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">四、递归与记忆化搜索（性能飞跃）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%80%92%E5%BD%92%E4%B8%89%E8%A6%81%E7%B4%A0%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">1. 递归三要素实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">2. 记忆化搜索优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A9-%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">🧩 综合应用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%B1%E8%84%89%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE%E7%9B%AE%E6%A0%87%E5%80%BC%EF%BC%88%E8%9E%8D%E5%90%88%E4%BA%8C%E5%88%86%E4%B8%8E%E9%80%92%E5%BD%92%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">山脉数组查找目标值（融合二分与递归）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8F%8B%EF%B8%8F-%E9%85%8D%E5%A5%97%E8%AE%AD%E7%BB%83%E4%BD%93%E7%B3%BB"><span class="toc-number">1.4.</span> <span class="toc-text">🏋️ 配套训练体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E8%AE%AD%E7%BB%83"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 时间复杂度分析训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%89%8D%E7%BC%80%E5%92%8C%E5%AE%9E%E6%88%98%E9%A2%98%E5%8D%95"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 前缀和实战题单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BA%8C%E5%88%86%E6%B3%95%E4%B8%93%E9%A1%B9%E8%AE%AD%E7%BB%83"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 二分法专项训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2%E6%8C%91%E6%88%98"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 记忆化搜索挑战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%91%F0%9F%92%BB-%E8%AE%AD%E7%BB%83%E6%8C%87%E5%AF%BC%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.5.</span> <span class="toc-text">🧑💻 训练指导建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9D-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E5%AF%BC%E5%9B%BE"><span class="toc-number">1.6.</span> <span class="toc-text">📝 学习路径导图</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b0e0.html" title="L8.5 - 数学专题：杨辉三角的编程妙用（拓展）">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）</a><time datetime="2025-05-03T04:09:50.000Z" title="发表于 2025-05-03 12:09:50">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/49c9.html" title="L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）</a><time datetime="2025-05-03T04:09:49.000Z" title="发表于 2025-05-03 12:09:49">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4487.html" title="L8.3 - 堆栈内存分配深度解析（拓展）">L8.3 - 堆栈内存分配深度解析（拓展）</a><time datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/555f.html" title="L8.2 - 递归&amp;指针深度解析（拓展）">L8.2 - 递归&amp;指针深度解析（拓展）</a><time datetime="2025-05-03T04:09:47.000Z" title="发表于 2025-05-03 12:09:47">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/accd.html" title="L8.1 - 位运算深度解析（拓展）">L8.1 - 位运算深度解析（拓展）</a><time datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By whystars</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Made with ❤️ by whystars</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-home"><i class="fa-solid fa-house"></i></div></div><div class="rightMenu-group rightMenu-line"><div class="rightMenu-item" id="menu-readmode"><i class="fa-solid fa-book-open"></i><span>阅读模式</span><script>document.getElementById('menu-readmode').addEventListener('click', () => {
+  const $body = document.body
+  $body.classList.toggle('read-mode')
+  if ($body.classList.contains('read-mode')) {
+    const newEle = document.createElement('button')
+    newEle.type = 'button'
+    newEle.className = 'fas fa-sign-out-alt exit-readmode'
+    $body.appendChild(newEle)
+
+    const clickFn = () => {
+      $body.classList.remove('read-mode')
+      newEle.remove()
+      newEle.removeEventListener('click', clickFn)
+    }
+
+    newEle.addEventListener('click', clickFn)
+  } else {
+    document.querySelector('.exit-readmode').remove()
+  }
+  RemoveRightMenu();
+})</script></div><div class="rightMenu-item" id="menu-darkmode"><i class="fa-solid fa-moon"></i><span>昼夜切换</span></div><div class="rightMenu-item" id="menu-copylink"><i class="fa-solid fa-link"></i><span>复制本文地址</span><script>document.getElementById('menu-copylink').addEventListener('click', function(e) {
+navigator.clipboard.writeText(window.location.href);
+btf.snackbarShow('复制成功！');
+RemoveRightMenu();
+e.preventDefault();
+});</script></div><div class="rightMenu-item" id="menu-copy"><i class="fa-solid fa-copyright"></i><span>版权声明</span><script>document.getElementById('menu-copy').addEventListener('click', function() {
+  location.href = '/agreement/';
+});</script></div></div></div><div id="rightmenu-mask" onclick="RemoveRightMenu()"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: 'Ov23liIto6rA7Ifnm15x',
+      clientSecret: '89f5322ee0583b8714ec451825932c9b7b053e7a',
+      repo: 'comments',
+      owner: 'whystars',
+      admin: ['whystars'],
+      id: '1477d87c7a87392dd19e0821b7dd40c7',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await getCSS('https://unpkg.com/gitalk/dist/gitalk.css')
+      await getScript('https://unpkg.com/gitalk/dist/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><div class="aplayer no-destroy" data-id="1433584979" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><script src="https://unpkg.com/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

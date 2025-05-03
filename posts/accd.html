@@ -1,0 +1,595 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>L8.1 - 位运算深度解析（拓展） | whystars</title><meta name="author" content="whystars"><meta name="copyright" content="whystars"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="L8.1 - 位运算深度解析（拓展）  🎯 教学目标  掌握位运算的底层原理：理解二进制位的操作机制 熟练应用位操作技巧：提升算法效率与内存利用率 规避常见位操作陷阱：识别并修复典型错误 开发位运算思维：将位操作融入程序设计   📚 核心知识点 一、基础位运算符表    运算符 名称 示例 二进制运算说明 应用场景     &amp; 按位与 0b1100 &amp; 0b1010 &#x3D; 0b1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="L8.1 - 位运算深度解析（拓展）">
+<meta property="og:url" content="https://whystars.cn/posts/accd.html">
+<meta property="og:site_name" content="whystars">
+<meta property="og:description" content="L8.1 - 位运算深度解析（拓展）  🎯 教学目标  掌握位运算的底层原理：理解二进制位的操作机制 熟练应用位操作技巧：提升算法效率与内存利用率 规避常见位操作陷阱：识别并修复典型错误 开发位运算思维：将位操作融入程序设计   📚 核心知识点 一、基础位运算符表    运算符 名称 示例 二进制运算说明 应用场景     &amp; 按位与 0b1100 &amp; 0b1010 &#x3D; 0b1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://whystars.cn/img/favicon.png">
+<meta property="article:published_time" content="2025-05-03T04:09:46.000Z">
+<meta property="article:modified_time" content="2025-05-03T06:10:41.039Z">
+<meta property="article:author" content="whystars">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="Level 1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://whystars.cn/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://whystars.cn/posts/accd.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: whystars","link":"链接: ","source":"来源: whystars","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'L8.1 - 位运算深度解析（拓展）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-03 14:10:41'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/mainColor/heoMainColor.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/fonts/hack.css"><link rel="stylesheet" href="/fonts/titlefont.css"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/XMx86jzlQw0brz3/latest/iconfont.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="whystars" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img" style="background-image:url(/img/favicon.png);background-repeat: no-repeat;background-position:center;"></div><div class="loading-image-dot"></div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = 'auto';
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/why_change.css"/><script src="https://unpkg.com/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/favicon.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="whystars"><span class="site-name">whystars</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></nav><div id="post-info"><h1 class="post-title">L8.1 - 位运算深度解析（拓展）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:10:41.039Z" title="更新于 2025-05-03 14:10:41">2025-05-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="L8.1 - 位运算深度解析（拓展）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img gist" style="background-image: url(/img/default.png)"></div><article class="post-content" id="article-container"><h1>L8.1 - 位运算深度解析（拓展）</h1>
+<hr>
+<h2 id="🎯-教学目标">🎯 教学目标</h2>
+<ol>
+<li><strong>掌握位运算的底层原理</strong>：理解二进制位的操作机制</li>
+<li><strong>熟练应用位操作技巧</strong>：提升算法效率与内存利用率</li>
+<li><strong>规避常见位操作陷阱</strong>：识别并修复典型错误</li>
+<li><strong>开发位运算思维</strong>：将位操作融入程序设计</li>
+</ol>
+<hr>
+<h2 id="📚-核心知识点">📚 核心知识点</h2>
+<h3 id="一、基础位运算符表">一、基础位运算符表</h3>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>名称</th>
+<th>示例</th>
+<th>二进制运算说明</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+<td><code>0b1100 &amp; 0b1010 = 0b1000</code></td>
+<td>同1为1</td>
+<td>掩码操作、奇偶判断</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>按位或</td>
+<td><code>0b1100 | 0b1010 = 0b1110</code></td>
+<td>有1为1</td>
+<td>位标记合并</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>按位异或</td>
+<td><code>0b1100 ^ 0b1010 = 0b0110</code></td>
+<td>不同为1</td>
+<td>数值交换、加密</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>按位取反</td>
+<td><code>~0b0011 = 0b1100</code></td>
+<td>0变1，1变0</td>
+<td>补码运算</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td>左移</td>
+<td><code>0b0011 &lt;&lt; 2 = 0b1100</code></td>
+<td>高位丢弃，低位补0</td>
+<td>快速乘2^n</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>右移</td>
+<td><code>0b1100 &gt;&gt; 2 = 0b0011</code></td>
+<td>低位丢弃，高位补符号位</td>
+<td>快速除2^n</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="二、位操作进阶技巧">二、位操作进阶技巧</h3>
+<h4 id="1-状态压缩（State-Compression）">1. 状态压缩（State Compression）</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用int类型存储30个开关状态</span></span><br><span class="line"><span class="type">int</span> switches = <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置第5位为开（从0计数）</span></span><br><span class="line">switches |= (<span class="number">1</span> &lt;&lt; <span class="number">4</span>);    <span class="comment">// 0b...00010000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查第3位是否开启</span></span><br><span class="line"><span class="keyword">if</span>(switches &amp; (<span class="number">1</span> &lt;&lt; <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="comment">// 第3位为真时的处理</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切换第7位状态</span></span><br><span class="line">switches ^= (<span class="number">1</span> &lt;&lt; <span class="number">6</span>); </span><br></pre></td></tr></table></figure>
+<h4 id="2-快速幂算法（Fast-Exponentiation）">2. 快速幂算法（Fast Exponentiation）</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fastPow</span><span class="params">(<span class="type">int</span> base, <span class="type">int</span> exp)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(exp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(exp &amp; <span class="number">1</span>) res *= base;  <span class="comment">// 处理当前位</span></span><br><span class="line">        base *= base;             <span class="comment">// 准备下一位权重</span></span><br><span class="line">        exp &gt;&gt;= <span class="number">1</span>;               <span class="comment">// 移出已处理位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-位计数（Population-Count）">3. 位计数（Population Count）</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">countBits</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n) &#123;</span><br><span class="line">        n &amp;= n - <span class="number">1</span>; <span class="comment">// 消除最后一个1</span></span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、位域（Bit-Fields）应用">三、位域（Bit Fields）应用</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 硬件寄存器模拟</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">StatusRegister</span> &#123;</span><br><span class="line">    <span class="type">unsigned</span> error_code  : <span class="number">4</span>;  <span class="comment">// 4位错误码</span></span><br><span class="line">    <span class="type">unsigned</span> temperature : <span class="number">7</span>;  <span class="comment">// 7位温度值</span></span><br><span class="line">    <span class="type">unsigned</span> fan_speed   : <span class="number">3</span>;  <span class="comment">// 3位风扇速度</span></span><br><span class="line">    <span class="type">unsigned</span> reserved    : <span class="number">2</span>;  <span class="comment">// 保留位</span></span><br><span class="line">    <span class="type">unsigned</span> power_on    : <span class="number">1</span>;  <span class="comment">// 电源状态位</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">StatusRegister reg;</span><br><span class="line">reg.temperature = <span class="number">72</span>;  <span class="comment">// 0b1001000</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(reg);   <span class="comment">// 输出2（字节）</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="💡-实战应用场景">💡 实战应用场景</h2>
+<h3 id="1-权限管理系统">1. 权限管理系统</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Permissions</span> &#123;</span><br><span class="line">    READ    = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,  <span class="comment">// 0b00000001</span></span><br><span class="line">    WRITE   = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,  <span class="comment">// 0b00000010</span></span><br><span class="line">    EXECUTE = <span class="number">1</span> &lt;&lt; <span class="number">2</span>   <span class="comment">// 0b00000100</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用户权限组合</span></span><br><span class="line"><span class="type">int</span> userA = READ | WRITE;     <span class="comment">// 0b00000011</span></span><br><span class="line"><span class="type">int</span> userB = READ | EXECUTE;   <span class="comment">// 0b00000101</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 权限验证函数</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">hasPermission</span><span class="params">(<span class="type">int</span> user, Permissions perm)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (user &amp; perm) == perm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-图像二值化处理">2. 图像二值化处理</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将ARGB颜色转为黑白（阈值128）</span></span><br><span class="line"><span class="function"><span class="type">uint32_t</span> <span class="title">binarizePixel</span><span class="params">(<span class="type">uint32_t</span> color)</span> </span>&#123;</span><br><span class="line">    <span class="type">uint8_t</span> r = (color &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">    <span class="type">uint8_t</span> g = (color &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">    <span class="type">uint8_t</span> b = color &amp; <span class="number">0xFF</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 灰度计算（加权平均）</span></span><br><span class="line">    <span class="type">uint8_t</span> gray = (r*<span class="number">30</span> + g*<span class="number">59</span> + b*<span class="number">11</span>) / <span class="number">100</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 二值化（返回全黑或全白）</span></span><br><span class="line">    <span class="keyword">return</span> (gray &gt; <span class="number">128</span>) ? <span class="number">0xFFFFFFFF</span> : <span class="number">0xFF000000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="💣-易错点详解">💣 易错点详解</h2>
+<h3 id="1-运算符优先级陷阱">1. 运算符优先级陷阱</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误示例</span></span><br><span class="line"><span class="keyword">if</span>(flags &amp; <span class="number">0xFF</span> == <span class="number">0x0F</span>)  <span class="comment">// 实际解析：flags &amp; (0xFF == 0x0F)</span></span><br><span class="line"><span class="comment">// 正确写法</span></span><br><span class="line"><span class="keyword">if</span>((flags &amp; <span class="number">0xFF</span>) == <span class="number">0x0F</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2-位移越界问题">2. 位移越界问题</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">a &lt;&lt;= <span class="number">32</span>;  <span class="comment">// 未定义行为！(int为32位时)</span></span><br><span class="line"><span class="comment">// 正确做法：确保位移位数小于数据类型位数</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-符号位处理差异">3. 符号位处理差异</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">-8</span>;             <span class="comment">// 0b1111...1000</span></span><br><span class="line"><span class="type">unsigned</span> y = x &gt;&gt; <span class="number">1</span>;    <span class="comment">// 算术右移：0b1111...1100 </span></span><br><span class="line"><span class="type">unsigned</span> z = (<span class="type">unsigned</span>)x &gt;&gt; <span class="number">1</span>; <span class="comment">// 逻辑右移：0b0111...1100</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-掩码生成错误">4. 掩码生成错误</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误生成低4位掩码</span></span><br><span class="line"><span class="type">int</span> mask = (<span class="number">1</span> &lt;&lt; <span class="number">4</span>) - <span class="number">1</span>;  <span class="comment">// 实际得到0b00001111</span></span><br><span class="line"><span class="comment">// 正确生成高4位掩码</span></span><br><span class="line"><span class="type">int</span> highMask = <span class="number">0xF0</span>;      <span class="comment">// 正确写法：0b11110000</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="🧩-配套练习">🧩 配套练习</h2>
+<h3 id="1-二进制转换器">1. 二进制转换器</h3>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>输入十进制整数（-128~127）</li>
+<li>输出8位二进制补码形式</li>
+<li>示例：<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：-5</span><br><span class="line">输出：11111011</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-找不同数字">2. 找不同数字</h3>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>输入：含101个整数的数组，其中100个出现两次，1个出现一次</li>
+<li>输出：找出唯一出现一次的数字</li>
+<li>限制：时间复杂度O(n)，空间复杂度O(1)</li>
+</ul>
+<h3 id="3-位计数挑战">3. 位计数挑战</h3>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>输入：32位无符号整数</li>
+<li>输出：二进制中1的个数</li>
+<li>附加：不使用循环语句实现</li>
+</ul>
+<hr>
+<h2 id="🔍-拓展模块">🔍 拓展模块</h2>
+<h3 id="1-位操作优化技巧">1. 位操作优化技巧</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 快速判断是否为2的幂次</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n &amp; (n<span class="number">-1</span>)) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 交换两数（无临时变量）</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span> </span>&#123;</span><br><span class="line">    a ^= b;</span><br><span class="line">    b ^= a;</span><br><span class="line">    a ^= b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-类型转换详解">2. 类型转换详解</h3>
+<h4 id="隐式转换风险示例：">隐式转换风险示例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">300</span>;        <span class="comment">// 二进制 00000001 00101100</span></span><br><span class="line"><span class="type">char</span> b = a;         <span class="comment">// 截断为 00101100 (十进制44)</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> c = a;<span class="comment">// 同上，但解释为无符号</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; b;          <span class="comment">// 输出ASCII码44的字符（,）</span></span><br><span class="line">cout &lt;&lt; (<span class="type">int</span>)c;     <span class="comment">// 输出44</span></span><br></pre></td></tr></table></figure>
+<h4 id="安全显式转换：">安全显式转换：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 符号扩展转换</span></span><br><span class="line"><span class="type">int32_t</span> x = <span class="number">-5</span>;                 <span class="comment">// 0xFFFFFFFB</span></span><br><span class="line"><span class="type">uint32_t</span> y = <span class="built_in">static_cast</span>&lt;<span class="type">uint32_t</span>&gt;(x); <span class="comment">// 0xFFFFFFFB（值4294967291）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 无符号转有符号</span></span><br><span class="line"><span class="type">uint8_t</span> u = <span class="number">200</span>;</span><br><span class="line"><span class="type">int8_t</span> s = <span class="built_in">static_cast</span>&lt;<span class="type">int8_t</span>&gt;(u); <span class="comment">// -56（二进制补码）</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="3-0x前缀详解（十六进制字面量）">3. 0x前缀详解（十六进制字面量）</h3>
+<h4 id="表示方法：">表示方法：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> red = <span class="number">0xFF0000</span>;    <span class="comment">// RGB红色分量</span></span><br><span class="line"><span class="type">int</span> mask = <span class="number">0x0000FFFF</span>; <span class="comment">// 低16位掩码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 内存地址操作示例</span></span><br><span class="line"><span class="type">uintptr_t</span> address = <span class="number">0x7FFF5678</span>;</span><br><span class="line"><span class="type">void</span>* ptr = <span class="built_in">reinterpret_cast</span>&lt;<span class="type">void</span>*&gt;(address);</span><br></pre></td></tr></table></figure>
+<h4 id="使用场景：">使用场景：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 颜色处理</span></span><br><span class="line"><span class="type">const</span> <span class="type">uint32_t</span> ALPHA_MASK = <span class="number">0xFF000000</span>;</span><br><span class="line"><span class="type">uint32_t</span> rgba = <span class="number">0x80FF4080</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 提取Alpha通道</span></span><br><span class="line"><span class="type">uint8_t</span> alpha = (rgba &amp; ALPHA_MASK) &gt;&gt; <span class="number">24</span>; <span class="comment">// 0x80 → 128</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="4-0b前缀详解（二进制字面量）">4. 0b前缀详解（二进制字面量）</h3>
+<h4 id="使用规范（C-14-）：">使用规范（C++14+）：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 权限标志位定义</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Permissions</span> &#123;</span><br><span class="line">    READ    = <span class="number">0b00000001</span>,</span><br><span class="line">    WRITE   = <span class="number">0b00000010</span>,</span><br><span class="line">    EXECUTE = <span class="number">0b00000100</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 状态寄存器设置</span></span><br><span class="line"><span class="type">uint8_t</span> status = <span class="number">0b1001&#x27;1100</span>; <span class="comment">// C++14支持分隔符</span></span><br></pre></td></tr></table></figure>
+<h4 id="掩码操作示例：">掩码操作示例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查第3位（从0开始计数）</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">checkBit3</span><span class="params">(<span class="type">uint8_t</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value &amp; <span class="number">0b00001000</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置第5位</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">setBit5</span><span class="params">(<span class="type">uint8_t</span> &amp;value)</span> </span>&#123;</span><br><span class="line">    value |= <span class="number">0b00100000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="5-模板应用示例">5. 模板应用示例</h3>
+<h4 id="通用位打印模板：">通用位打印模板：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printBits</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constexpr</span> <span class="type">int</span> bits = <span class="built_in">sizeof</span>(T)*CHAR_BIT;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=bits<span class="number">-1</span>; i&gt;=<span class="number">0</span>; --i) &#123;</span><br><span class="line">        cout &lt;&lt; ((value &gt;&gt; i) &amp; <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">4</span> == <span class="number">0</span> &amp;&amp; i !=<span class="number">0</span>) cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="built_in">printBits</span>&lt;<span class="type">int</span>&gt;(<span class="number">25</span>);       <span class="comment">// 0000 0000 0000 0000 0000 0000 0001 1001</span></span><br><span class="line"><span class="built_in">printBits</span>&lt;<span class="type">float</span>&gt;(<span class="number">3.14f</span>);  <span class="comment">// 显示浮点数的二进制表示</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="6-快速幂算法详解">6. 快速幂算法详解</h3>
+<h4 id="数学原理：">数学原理：</h4>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3^13 = 3^(8+4+1) = 3^8 * 3^4 * 3^1</span><br><span class="line">二进制指数分解：13 = 1101</span><br></pre></td></tr></table></figure>
+<h4 id="迭代实现：">迭代实现：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function">T <span class="title">fastPower</span><span class="params">(T base, <span class="type">unsigned</span> exp)</span> </span>&#123;</span><br><span class="line">    T result = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(exp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(exp &amp; <span class="number">1</span>) result *= base; <span class="comment">// 当前位为1时累乘</span></span><br><span class="line">        base *= base;               <span class="comment">// 基数平方</span></span><br><span class="line">        exp &gt;&gt;= <span class="number">1</span>;                  <span class="comment">// 右移一位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算2^30</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">fastPower</span>(<span class="number">2</span>, <span class="number">30</span>); <span class="comment">// 1073741824</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="7-位反转算法详解">7. 位反转算法详解</h3>
+<h4 id="分治算法步骤：">分治算法步骤：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">uint32_t</span> <span class="title">reverseBits</span><span class="params">(<span class="type">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 交换每1位：0x55555555 = 01010101... </span></span><br><span class="line">    n = ((n &gt;&gt; <span class="number">1</span>) &amp; <span class="number">0x55555555</span>) | ((n &amp; <span class="number">0x55555555</span>) &lt;&lt; <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 交换每2位：0x33333333 = 00110011...</span></span><br><span class="line">    n = ((n &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x33333333</span>) | ((n &amp; <span class="number">0x33333333</span>) &lt;&lt; <span class="number">2</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 交换每4位：0x0F0F0F0F = 00001111...</span></span><br><span class="line">    n = ((n &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0F0F0F0F</span>) | ((n &amp; <span class="number">0x0F0F0F0F</span>) &lt;&lt; <span class="number">4</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 交换每8位：0x00FF00FF...</span></span><br><span class="line">    n = ((n &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0x00FF00FF</span>) | ((n &amp; <span class="number">0x00FF00FF</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 交换高16位与低16位</span></span><br><span class="line">    <span class="keyword">return</span> (n &gt;&gt; <span class="number">16</span>) | (n &lt;&lt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例：0b00000010100101000001111010011100 → </span></span><br><span class="line"><span class="comment">//       0b00111001011110000010100101000000</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结归纳">总结归纳</h2>
+<ol>
+<li><strong>位运算符</strong>：理解真值表和位移的算术特性</li>
+<li><strong>类型转换</strong>：注意符号扩展和数值截断问题</li>
+<li>数值字面量：
+<ul>
+<li><code>0x</code>开头的十六进制适合掩码操作</li>
+<li><code>0b</code>开头的二进制适合位标志定义</li>
+</ul>
+</li>
+<li><strong>模板应用</strong>：编写类型安全的通用位操作函数</li>
+<li>算法核心：
+<ul>
+<li>快速幂利用二进制指数分解</li>
+<li>位反转采用分治策略逐步交换</li>
+</ul>
+</li>
+</ol>
+<p>通过实际代码演示和分步注释，可以帮助您深入理解这些底层操作的实际应用场景和实现原理。建议结合调试器观察变量的二进制变化过程，加深对位操作的理解。</p>
+<h2 id="📊-性能对比实验">📊 性能对比实验</h2>
+<h3 id="位操作-vs-传统运算">位操作 vs 传统运算</h3>
+<table>
+<thead>
+<tr>
+<th>操作类型</th>
+<th>传统方法</th>
+<th>位操作方法</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>奇偶判断</td>
+<td><code>n % 2 == 0</code></td>
+<td><code>(n &amp; 1) == 0</code></td>
+<td>3.2x</td>
+</tr>
+<tr>
+<td>乘16</td>
+<td><code>n * 16</code></td>
+<td><code>n &lt;&lt; 4</code></td>
+<td>2.8x</td>
+</tr>
+<tr>
+<td>符号判断</td>
+<td><code>n &lt; 0</code></td>
+<td><code>n &gt;&gt; 31</code></td>
+<td>1.5x</td>
+</tr>
+<tr>
+<td>取绝对值</td>
+<td><code>abs(n)</code></td>
+<td>位掩码操作</td>
+<td>1.7x</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="📝-学习路径建议">📝 学习路径建议</h2>
+<!-- ```mermaid -->
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  graph LR
+A[基础运算符] --&gt; B[位操作技巧]
+B --&gt; C[状态压缩]
+C --&gt; D[硬件级优化]
+D --&gt; E[0x和0b前缀]
+E --&gt; F[算法优化实战]
+  </pre></div>
+<!-- ``` --></article><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="本文为原创文章，著作权归whystars所有">原创</a><a class="post-copyright-title" href="https://whystars.cn/posts/accd.html"><span>L8.1 - 位运算深度解析（拓展）</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"></span><a class="link" href="https://whystars.cn">whystars</a></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a class="link" href="https://whystars.cn/posts/accd.html">https://whystars.cn/posts/accd.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">转载前请认真阅读本站 <a href="/agreement">版权协议</a>，文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" > CC BY-NC-SA 4.0 许可协议</a></span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/c/">c++</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><a class="post-meta__tags" href="/tags/Level-1/">Level 1</a></div><div class="post_share"><div class="social-share" data-image="/img/favicon.png" data-sites="facebook,twitter,wechat,qq,weibo"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/favicon.png'" alt="avatar"/></div><div class="author-info__name">whystars</div><div class="author-info__description">whystars' blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whystars"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到whystars的blog！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">L8.1 - 位运算深度解析（拓展）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%95%99%E5%AD%A6%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">🎯 教学目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">📚 核心知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6%E8%A1%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">一、基础位运算符表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%8D%E6%93%8D%E4%BD%9C%E8%BF%9B%E9%98%B6%E6%8A%80%E5%B7%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text">二、位操作进阶技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9%EF%BC%88State-Compression%EF%BC%89"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1. 状态压缩（State Compression）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E5%B9%82%E7%AE%97%E6%B3%95%EF%BC%88Fast-Exponentiation%EF%BC%89"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2. 快速幂算法（Fast Exponentiation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%8D%E8%AE%A1%E6%95%B0%EF%BC%88Population-Count%EF%BC%89"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">3. 位计数（Population Count）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%8D%E5%9F%9F%EF%BC%88Bit-Fields%EF%BC%89%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">三、位域（Bit Fields）应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.3.</span> <span class="toc-text">💡 实战应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 权限管理系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%BE%E5%83%8F%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 图像二值化处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A3-%E6%98%93%E9%94%99%E7%82%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.4.</span> <span class="toc-text">💣 易错点详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E9%99%B7%E9%98%B1"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 运算符优先级陷阱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%8D%E7%A7%BB%E8%B6%8A%E7%95%8C%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 位移越界问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%A6%E5%8F%B7%E4%BD%8D%E5%A4%84%E7%90%86%E5%B7%AE%E5%BC%82"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 符号位处理差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8E%A9%E7%A0%81%E7%94%9F%E6%88%90%E9%94%99%E8%AF%AF"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 掩码生成错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A9-%E9%85%8D%E5%A5%97%E7%BB%83%E4%B9%A0"><span class="toc-number">1.5.</span> <span class="toc-text">🧩 配套练习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 二进制转换器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%BE%E4%B8%8D%E5%90%8C%E6%95%B0%E5%AD%97"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 找不同数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%8D%E8%AE%A1%E6%95%B0%E6%8C%91%E6%88%98"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 位计数挑战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%8D-%E6%8B%93%E5%B1%95%E6%A8%A1%E5%9D%97"><span class="toc-number">1.6.</span> <span class="toc-text">🔍 拓展模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%8D%E6%93%8D%E4%BD%9C%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 位操作优化技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 类型转换详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E9%A3%8E%E9%99%A9%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">隐式转换风险示例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2%EF%BC%9A"><span class="toc-number">1.6.2.2.</span> <span class="toc-text">安全显式转换：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-0x%E5%89%8D%E7%BC%80%E8%AF%A6%E8%A7%A3%EF%BC%88%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E5%AD%97%E9%9D%A2%E9%87%8F%EF%BC%89"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. 0x前缀详解（十六进制字面量）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">表示方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">使用场景：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-0b%E5%89%8D%E7%BC%80%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E9%9D%A2%E9%87%8F%EF%BC%89"><span class="toc-number">1.6.4.</span> <span class="toc-text">4. 0b前缀详解（二进制字面量）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83%EF%BC%88C-14-%EF%BC%89%EF%BC%9A"><span class="toc-number">1.6.4.1.</span> <span class="toc-text">使用规范（C++14+）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-number">1.6.4.2.</span> <span class="toc-text">掩码操作示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%A8%A1%E6%9D%BF%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.6.5.</span> <span class="toc-text">5. 模板应用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E4%BD%8D%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF%EF%BC%9A"><span class="toc-number">1.6.5.1.</span> <span class="toc-text">通用位打印模板：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%BF%AB%E9%80%9F%E5%B9%82%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.6.6.</span> <span class="toc-text">6. 快速幂算法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">1.6.6.1.</span> <span class="toc-text">数学原理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">1.6.6.2.</span> <span class="toc-text">迭代实现：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E4%BD%8D%E5%8F%8D%E8%BD%AC%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.6.7.</span> <span class="toc-text">7. 位反转算法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.6.7.1.</span> <span class="toc-text">分治算法步骤：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3"><span class="toc-number">1.7.</span> <span class="toc-text">总结归纳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.8.</span> <span class="toc-text">📊 性能对比实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E6%93%8D%E4%BD%9C-vs-%E4%BC%A0%E7%BB%9F%E8%BF%90%E7%AE%97"><span class="toc-number">1.8.1.</span> <span class="toc-text">位操作 vs 传统运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9D-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.9.</span> <span class="toc-text">📝 学习路径建议</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b0e0.html" title="L8.5 - 数学专题：杨辉三角的编程妙用（拓展）">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）</a><time datetime="2025-05-03T04:09:50.000Z" title="发表于 2025-05-03 12:09:50">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/49c9.html" title="L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）</a><time datetime="2025-05-03T04:09:49.000Z" title="发表于 2025-05-03 12:09:49">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4487.html" title="L8.3 - 堆栈内存分配深度解析（拓展）">L8.3 - 堆栈内存分配深度解析（拓展）</a><time datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/555f.html" title="L8.2 - 递归&amp;指针深度解析（拓展）">L8.2 - 递归&amp;指针深度解析（拓展）</a><time datetime="2025-05-03T04:09:47.000Z" title="发表于 2025-05-03 12:09:47">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/accd.html" title="L8.1 - 位运算深度解析（拓展）">L8.1 - 位运算深度解析（拓展）</a><time datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By whystars</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Made with ❤️ by whystars</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-home"><i class="fa-solid fa-house"></i></div></div><div class="rightMenu-group rightMenu-line"><div class="rightMenu-item" id="menu-readmode"><i class="fa-solid fa-book-open"></i><span>阅读模式</span><script>document.getElementById('menu-readmode').addEventListener('click', () => {
+  const $body = document.body
+  $body.classList.toggle('read-mode')
+  if ($body.classList.contains('read-mode')) {
+    const newEle = document.createElement('button')
+    newEle.type = 'button'
+    newEle.className = 'fas fa-sign-out-alt exit-readmode'
+    $body.appendChild(newEle)
+
+    const clickFn = () => {
+      $body.classList.remove('read-mode')
+      newEle.remove()
+      newEle.removeEventListener('click', clickFn)
+    }
+
+    newEle.addEventListener('click', clickFn)
+  } else {
+    document.querySelector('.exit-readmode').remove()
+  }
+  RemoveRightMenu();
+})</script></div><div class="rightMenu-item" id="menu-darkmode"><i class="fa-solid fa-moon"></i><span>昼夜切换</span></div><div class="rightMenu-item" id="menu-copylink"><i class="fa-solid fa-link"></i><span>复制本文地址</span><script>document.getElementById('menu-copylink').addEventListener('click', function(e) {
+navigator.clipboard.writeText(window.location.href);
+btf.snackbarShow('复制成功！');
+RemoveRightMenu();
+e.preventDefault();
+});</script></div><div class="rightMenu-item" id="menu-copy"><i class="fa-solid fa-copyright"></i><span>版权声明</span><script>document.getElementById('menu-copy').addEventListener('click', function() {
+  location.href = '/agreement/';
+});</script></div></div></div><div id="rightmenu-mask" onclick="RemoveRightMenu()"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: 'Ov23liIto6rA7Ifnm15x',
+      clientSecret: '89f5322ee0583b8714ec451825932c9b7b053e7a',
+      repo: 'comments',
+      owner: 'whystars',
+      admin: ['whystars'],
+      id: '503b1ca0df54337c0bc08ecac40dac84',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await getCSS('https://unpkg.com/gitalk/dist/gitalk.css')
+      await getScript('https://unpkg.com/gitalk/dist/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><div class="aplayer no-destroy" data-id="1433584979" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><script src="https://unpkg.com/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

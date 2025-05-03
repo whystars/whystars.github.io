@@ -1,0 +1,589 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>L8.3 - 堆栈内存分配深度解析（拓展） | whystars</title><meta name="author" content="whystars"><meta name="copyright" content="whystars"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="L8.3 - 堆栈内存分配深度解析（拓展）  🎯 教学目标  掌握内存布局原理：理解栈、堆、静态区的存储机制 精通动态内存管理：深入理解new&#x2F;delete的底层实现 规避内存操作陷阱：识别常见内存错误模式 优化内存使用效率：掌握内存池等高级技巧   📚 核心知识点 一、内存区域全景图     graph TD     A[内存布局] --&gt; B[栈区 Stack]     A --&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="L8.3 - 堆栈内存分配深度解析（拓展）">
+<meta property="og:url" content="https://whystars.cn/posts/4487.html">
+<meta property="og:site_name" content="whystars">
+<meta property="og:description" content="L8.3 - 堆栈内存分配深度解析（拓展）  🎯 教学目标  掌握内存布局原理：理解栈、堆、静态区的存储机制 精通动态内存管理：深入理解new&#x2F;delete的底层实现 规避内存操作陷阱：识别常见内存错误模式 优化内存使用效率：掌握内存池等高级技巧   📚 核心知识点 一、内存区域全景图     graph TD     A[内存布局] --&gt; B[栈区 Stack]     A --&amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://whystars.cn/img/favicon.png">
+<meta property="article:published_time" content="2025-05-03T04:09:48.000Z">
+<meta property="article:modified_time" content="2025-05-03T06:09:07.964Z">
+<meta property="article:author" content="whystars">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="Level 1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://whystars.cn/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://whystars.cn/posts/4487.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: whystars","link":"链接: ","source":"来源: whystars","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'L8.3 - 堆栈内存分配深度解析（拓展）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-03 14:09:07'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/mainColor/heoMainColor.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/fonts/hack.css"><link rel="stylesheet" href="/fonts/titlefont.css"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/XMx86jzlQw0brz3/latest/iconfont.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="whystars" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img" style="background-image:url(/img/favicon.png);background-repeat: no-repeat;background-position:center;"></div><div class="loading-image-dot"></div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = 'auto';
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/why_change.css"/><script src="https://unpkg.com/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/favicon.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="whystars"><span class="site-name">whystars</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></nav><div id="post-info"><h1 class="post-title">L8.3 - 堆栈内存分配深度解析（拓展）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:09:07.964Z" title="更新于 2025-05-03 14:09:07">2025-05-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="L8.3 - 堆栈内存分配深度解析（拓展）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img gist" style="background-image: url(/img/default.png)"></div><article class="post-content" id="article-container"><h1>L8.3 - 堆栈内存分配深度解析（拓展）</h1>
+<hr>
+<h2 id="🎯-教学目标">🎯 教学目标</h2>
+<ol>
+<li><strong>掌握内存布局原理</strong>：理解栈、堆、静态区的存储机制</li>
+<li><strong>精通动态内存管理</strong>：深入理解new/delete的底层实现</li>
+<li><strong>规避内存操作陷阱</strong>：识别常见内存错误模式</li>
+<li><strong>优化内存使用效率</strong>：掌握内存池等高级技巧</li>
+</ol>
+<hr>
+<h2 id="📚-核心知识点">📚 核心知识点</h2>
+<h3 id="一、内存区域全景图">一、内存区域全景图</h3>
+<!-- ```mermaid -->
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  graph TD
+    A[内存布局] --&gt; B[栈区 Stack]
+    A --&gt; C[堆区 Heap]
+    A --&gt; D[静态&#x2F;全局区]
+    A --&gt; E[常量区]
+    A --&gt; F[代码区]
+    
+    B --&gt; B1(自动管理)
+    B --&gt; B2(LIFO结构)
+    B --&gt; B3(大小受限)
+    
+    C --&gt; C1(手动管理)
+    C --&gt; C2(随机访问)
+    C --&gt; C3(大容量)
+  </pre></div>
+<!-- ``` -->
+<hr>
+<h3 id="二、栈内存-vs-堆内存对比">二、栈内存 vs 堆内存对比</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>栈内存</th>
+<th>堆内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>管理方式</strong></td>
+<td>编译器自动管理</td>
+<td>程序员手动管理</td>
+</tr>
+<tr>
+<td><strong>分配速度</strong></td>
+<td>纳秒级（移动栈指针）</td>
+<td>微秒级（搜索空闲块）</td>
+</tr>
+<tr>
+<td><strong>容量限制</strong></td>
+<td>较小（默认MB级）</td>
+<td>较大（受系统物理内存限制）</td>
+</tr>
+<tr>
+<td><strong>生命周期</strong></td>
+<td>作用域结束自动释放</td>
+<td>显式释放前一直存在</td>
+</tr>
+<tr>
+<td><strong>内存碎片</strong></td>
+<td>无</td>
+<td>可能产生</td>
+</tr>
+<tr>
+<td><strong>访问安全</strong></td>
+<td>自动边界检查（部分编译器）</td>
+<td>无保护</td>
+</tr>
+<tr>
+<td><strong>典型应用</strong></td>
+<td>局部变量、函数参数</td>
+<td>动态数据结构、大对象</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="三、最基础用法">三、最基础用法</h3>
+<h4 id="1-创建单个对象">1. 创建单个对象</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建对象</span></span><br><span class="line">Person* p = <span class="keyword">new</span> <span class="built_in">Person</span>(); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用对象</span></span><br><span class="line">p-&gt;<span class="built_in">sayHello</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释放对象</span></span><br><span class="line"><span class="keyword">delete</span> p;    <span class="comment">// 必须配对使用</span></span><br><span class="line">p = <span class="literal">nullptr</span>; <span class="comment">// 防止野指针</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-创建对象数组">2. 创建对象数组</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数组（10个元素）</span></span><br><span class="line"><span class="type">int</span>* nums = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>]; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用数组</span></span><br><span class="line">nums[<span class="number">0</span>] = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释放数组</span></span><br><span class="line"><span class="keyword">delete</span>[] nums;  <span class="comment">// 必须用 delete[]</span></span><br><span class="line">nums = <span class="literal">nullptr</span>;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、正确配对使用（必须记住！）">四、正确配对使用（必须记住！）</h3>
+<table>
+<thead>
+<tr>
+<th>创建方式</th>
+<th>释放方式</th>
+<th>错误示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>new 类型</code></td>
+<td><code>delete</code></td>
+<td><code>delete[] p</code> ❌</td>
+</tr>
+<tr>
+<td><code>new 类型[数量]</code></td>
+<td><code>delete[]</code></td>
+<td><code>delete arr</code> ❌</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ✅ 正确示例</span></span><br><span class="line">string* s = <span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"><span class="keyword">delete</span> s;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span>* arr = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">5</span>]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;; </span><br><span class="line"><span class="keyword">delete</span>[] arr;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌ 错误示例</span></span><br><span class="line"><span class="type">int</span>* p = <span class="keyword">new</span> <span class="type">int</span>;</span><br><span class="line"><span class="keyword">delete</span>[] p; <span class="comment">// 会导致崩溃</span></span><br><span class="line"></span><br><span class="line">string* arr = <span class="keyword">new</span> string[<span class="number">3</span>];</span><br><span class="line"><span class="keyword">delete</span> arr; <span class="comment">// 只释放第一个元素</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="五、现代更安全的做法">五、现代更安全的做法</h3>
+<h4 id="1-智能指针（自动释放）">1. 智能指针（自动释放）</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 单个对象（自动释放）</span></span><br><span class="line"><span class="keyword">auto</span> p = std::<span class="built_in">make_unique</span>&lt;Person&gt;(); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组（自动释放）</span></span><br><span class="line"><span class="keyword">auto</span> nums = std::<span class="built_in">make_unique</span>&lt;<span class="type">int</span>[]&gt;(<span class="number">10</span>); </span><br><span class="line">nums[<span class="number">0</span>] = <span class="number">100</span>; <span class="comment">// 自动释放，无需手动delete</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-使用标准容器（推荐）">2. 使用标准容器（推荐）</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 代替动态数组</span></span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">nums</span><span class="params">(<span class="number">10</span>)</span></span>; </span><br><span class="line">nums[<span class="number">0</span>] = <span class="number">100</span>; <span class="comment">// 自动管理内存</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二维数组</span></span><br><span class="line">std::vector&lt;std::vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">matrix</span>(<span class="number">5</span>, std::<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="六、必须注意的常见错误">六、必须注意的常见错误</h3>
+<h4 id="1-忘记释放内存">1. 忘记释放内存</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span>* p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 忘记写 delete p → 内存泄漏！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-重复释放">2. 重复释放</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p = <span class="keyword">new</span> <span class="type">int</span>;</span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line"><span class="keyword">delete</span> p; <span class="comment">// ❌ 重复释放，程序崩溃</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-访问已释放内存">3. 访问已释放内存</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line">*p = <span class="number">10</span>; <span class="comment">// ❌ p指向的内存已释放</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="七、最佳实践总结">七、最佳实践总结</h3>
+<ol>
+<li>
+<p><strong>配对使用原则</strong></p>
+<ul>
+<li><code>new</code> → <code>delete</code></li>
+<li><code>new[]</code> → <code>delete[]</code></li>
+</ul>
+</li>
+<li>
+<p><strong>立即初始化习惯</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">0</span>); <span class="comment">// ✅ 明确初始化</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>释放后置空指针</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> p; </span><br><span class="line">p = <span class="literal">nullptr</span>; <span class="comment">// 防止误用</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>优先使用智能指针</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> p = std::<span class="built_in">make_unique</span>&lt;MyClass&gt;(); <span class="comment">// 自动管理</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>多用标准容器</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">arr</span><span class="params">(<span class="number">100</span>)</span></span>; <span class="comment">// 自动扩容/释放</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="八、-与普通数组的关键区别">八、 与普通数组的关键区别</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>普通数组</th>
+<th>new/delete数组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>分配位置</strong></td>
+<td>栈区</td>
+<td>堆区</td>
+</tr>
+<tr>
+<td><strong>大小确定时机</strong></td>
+<td>编译期</td>
+<td>运行期</td>
+</tr>
+<tr>
+<td><strong>可变大小</strong></td>
+<td>不可变</td>
+<td>可动态调整（需重新分配）</td>
+</tr>
+<tr>
+<td><strong>初始化</strong></td>
+<td>可部分初始化</td>
+<td>默认初始化（POD类型不初始化）</td>
+</tr>
+<tr>
+<td><strong>内存对齐</strong></td>
+<td>自动对齐</td>
+<td>可定制对齐方式</td>
+</tr>
+<tr>
+<td><strong>异常安全</strong></td>
+<td>无异常</td>
+<td>可能抛出bad_alloc</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="💡-实战应用场景">💡 实战应用场景</h2>
+<h3 id="1-动态矩阵类实现">1. 动态矩阵类实现</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line">    <span class="type">double</span>** data;</span><br><span class="line">    <span class="type">int</span> rows, cols;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Matrix</span>(<span class="type">int</span> r, <span class="type">int</span> c) : <span class="built_in">rows</span>(r), <span class="built_in">cols</span>(c) &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="type">double</span>*[rows];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;rows; ++i) &#123;</span><br><span class="line">            data[i] = <span class="keyword">new</span> <span class="type">double</span>[cols]&#123;<span class="number">0</span>&#125;; <span class="comment">// 堆分配+零初始化</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ~<span class="built_in">Matrix</span>() &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;rows; ++i) &#123;</span><br><span class="line">            <span class="keyword">delete</span>[] data[i]; <span class="comment">// 逆序释放</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">delete</span>[] data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-内存池预分配">2. 内存池预分配</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MemoryPool</span> &#123;</span><br><span class="line">    <span class="type">char</span>* pool;</span><br><span class="line">    <span class="type">size_t</span> blockSize;</span><br><span class="line">    stack&lt;<span class="type">void</span>*&gt; freeList;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MemoryPool</span>(<span class="type">size_t</span> blockCount, <span class="type">size_t</span> sizePerBlock) </span><br><span class="line">        : <span class="built_in">blockSize</span>(sizePerBlock) </span><br><span class="line">    &#123;</span><br><span class="line">        pool = <span class="keyword">new</span> <span class="type">char</span>[blockCount*sizePerBlock];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">size_t</span> i=<span class="number">0</span>; i&lt;blockCount; ++i) &#123;</span><br><span class="line">            freeList.<span class="built_in">push</span>(pool + i*sizePerBlock);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span>* <span class="title">allocate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(freeList.<span class="built_in">empty</span>()) <span class="keyword">throw</span> <span class="built_in">bad_alloc</span>();</span><br><span class="line">        <span class="type">void</span>* ptr = freeList.<span class="built_in">top</span>();</span><br><span class="line">        freeList.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">return</span> ptr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">deallocate</span><span class="params">(<span class="type">void</span>* ptr)</span> </span>&#123;</span><br><span class="line">        freeList.<span class="built_in">push</span>(ptr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="💣-深度陷阱解析">💣 深度陷阱解析</h2>
+<h3 id="1-内存泄漏模式">1. 内存泄漏模式</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">leakyFunction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span>* p = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">return</span>; <span class="comment">// 没有delete → 永久泄漏!</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确模式：RAII封装</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">safeFunction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">unique_ptr&lt;<span class="type">int</span>[]&gt; <span class="title">p</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>[<span class="number">100</span>])</span></span>;</span><br><span class="line">    <span class="comment">// 自动释放</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-悬挂指针问题">2. 悬挂指针问题</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span>* <span class="title">createDangling</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> local = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">return</span> &amp;local; <span class="comment">// 返回栈地址 → 危险!</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span>* <span class="title">createValid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">42</span>); <span class="comment">// 堆内存安全</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-多态对象误删">3. 多态对象误删</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> &#123; <span class="keyword">virtual</span> ~<span class="built_in">Base</span>() &#123;&#125; &#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Derived</span> : <span class="keyword">public</span> Base &#123;&#125;;</span><br><span class="line"></span><br><span class="line">Base* p = <span class="keyword">new</span> Derived;</span><br><span class="line"><span class="keyword">delete</span> p; <span class="comment">// 正确：需要虚析构函数</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="🛠️-调试技巧宝典">🛠️ 调试技巧宝典</h2>
+<h3 id="1-Valgrind内存检测">1. Valgrind内存检测</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检测内存泄漏</span></span><br><span class="line">valgrind --leak-check=full ./your_program</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例</span></span><br><span class="line">==12345== 100 bytes <span class="keyword">in</span> 1 blocks are definitely lost</span><br><span class="line">==12345==    at 0x483777F: operator new[](unsigned long)</span><br><span class="line">==12345==    by 0x401234: leakyFunction() (main.cpp:5)</span><br></pre></td></tr></table></figure>
+<h3 id="2-重载new-delete调试">2. 重载new/delete调试</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跟踪内存分配</span></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">new</span><span class="params">(<span class="type">size_t</span> size)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Allocating &quot;</span> &lt;&lt; size &lt;&lt; <span class="string">&quot; bytes\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">malloc</span>(size);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="keyword">operator</span> <span class="title">delete</span><span class="params">(<span class="type">void</span>* ptr)</span> <span class="keyword">noexcept</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Freeing memory\n&quot;</span>;</span><br><span class="line">    <span class="built_in">free</span>(ptr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="📊-性能优化指南">📊 性能优化指南</h2>
+<h3 id="1-对象池模式">1. 对象池模式</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GameObject</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="type">static</span> MemoryPool pool;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">new</span><span class="params">(<span class="type">size_t</span> size)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pool.<span class="built_in">allocate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="keyword">operator</span> <span class="title">delete</span><span class="params">(<span class="type">void</span>* ptr)</span> </span>&#123;</span><br><span class="line">        pool.<span class="built_in">deallocate</span>(ptr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-智能指针最佳实践">2. 智能指针最佳实践</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 现代C++安全用法</span></span><br><span class="line"><span class="function">shared_ptr&lt;<span class="type">int</span>[]&gt; <span class="title">createArray</span><span class="params">(<span class="type">size_t</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">make_shared</span>&lt;<span class="type">int</span>[]&gt;(n); <span class="comment">// C++20起支持</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二维数组安全封装</span></span><br><span class="line"><span class="keyword">auto</span> matrix = make_unique&lt;unique_ptr&lt;<span class="type">int</span>[]&gt;[]&gt;(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; ++i) &#123;</span><br><span class="line">    matrix[i] = <span class="built_in">make_unique</span>&lt;<span class="type">int</span>[]&gt;(<span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="本文为原创文章，著作权归whystars所有">原创</a><a class="post-copyright-title" href="https://whystars.cn/posts/4487.html"><span>L8.3 - 堆栈内存分配深度解析（拓展）</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"></span><a class="link" href="https://whystars.cn">whystars</a></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a class="link" href="https://whystars.cn/posts/4487.html">https://whystars.cn/posts/4487.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">转载前请认真阅读本站 <a href="/agreement">版权协议</a>，文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" > CC BY-NC-SA 4.0 许可协议</a></span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/c/">c++</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><a class="post-meta__tags" href="/tags/Level-1/">Level 1</a></div><div class="post_share"><div class="social-share" data-image="/img/favicon.png" data-sites="facebook,twitter,wechat,qq,weibo"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/favicon.png'" alt="avatar"/></div><div class="author-info__name">whystars</div><div class="author-info__description">whystars' blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whystars"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到whystars的blog！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">L8.3 - 堆栈内存分配深度解析（拓展）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%95%99%E5%AD%A6%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">🎯 教学目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">📚 核心知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%85%A8%E6%99%AF%E5%9B%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text">一、内存区域全景图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%88%E5%86%85%E5%AD%98-vs-%E5%A0%86%E5%86%85%E5%AD%98%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.2.</span> <span class="toc-text">二、栈内存 vs 堆内存对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%80%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">三、最基础用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E5%8D%95%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1. 创建单个对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2. 创建对象数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%AD%A3%E7%A1%AE%E9%85%8D%E5%AF%B9%E4%BD%BF%E7%94%A8%EF%BC%88%E5%BF%85%E9%A1%BB%E8%AE%B0%E4%BD%8F%EF%BC%81%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">四、正确配对使用（必须记住！）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%8E%B0%E4%BB%A3%E6%9B%B4%E5%AE%89%E5%85%A8%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-number">1.2.5.</span> <span class="toc-text">五、现代更安全的做法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%EF%BC%88%E8%87%AA%E5%8A%A8%E9%87%8A%E6%94%BE%EF%BC%89"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">1. 智能指针（自动释放）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E5%AE%B9%E5%99%A8%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">2. 使用标准容器（推荐）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%BF%85%E9%A1%BB%E6%B3%A8%E6%84%8F%E7%9A%84%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="toc-number">1.2.6.</span> <span class="toc-text">六、必须注意的常见错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%BF%98%E8%AE%B0%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">1. 忘记释放内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%87%8D%E5%A4%8D%E9%87%8A%E6%94%BE"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">2. 重复释放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%AE%BF%E9%97%AE%E5%B7%B2%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">3. 访问已释放内存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.7.</span> <span class="toc-text">七、最佳实践总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81-%E4%B8%8E%E6%99%AE%E9%80%9A%E6%95%B0%E7%BB%84%E7%9A%84%E5%85%B3%E9%94%AE%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.8.</span> <span class="toc-text">八、 与普通数组的关键区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.3.</span> <span class="toc-text">💡 实战应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8A%A8%E6%80%81%E7%9F%A9%E9%98%B5%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 动态矩阵类实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E5%AD%98%E6%B1%A0%E9%A2%84%E5%88%86%E9%85%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 内存池预分配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A3-%E6%B7%B1%E5%BA%A6%E9%99%B7%E9%98%B1%E8%A7%A3%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">💣 深度陷阱解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 内存泄漏模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%82%AC%E6%8C%82%E6%8C%87%E9%92%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 悬挂指针问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%9A%E6%80%81%E5%AF%B9%E8%B1%A1%E8%AF%AF%E5%88%A0"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 多态对象误删</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7%E5%AE%9D%E5%85%B8"><span class="toc-number">1.5.</span> <span class="toc-text">🛠️ 调试技巧宝典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Valgrind%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. Valgrind内存检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%87%8D%E8%BD%BDnew-delete%E8%B0%83%E8%AF%95"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 重载new&#x2F;delete调试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97"><span class="toc-number">1.6.</span> <span class="toc-text">📊 性能优化指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 对象池模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 智能指针最佳实践</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b0e0.html" title="L8.5 - 数学专题：杨辉三角的编程妙用（拓展）">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）</a><time datetime="2025-05-03T04:09:50.000Z" title="发表于 2025-05-03 12:09:50">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/49c9.html" title="L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）</a><time datetime="2025-05-03T04:09:49.000Z" title="发表于 2025-05-03 12:09:49">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4487.html" title="L8.3 - 堆栈内存分配深度解析（拓展）">L8.3 - 堆栈内存分配深度解析（拓展）</a><time datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/555f.html" title="L8.2 - 递归&amp;指针深度解析（拓展）">L8.2 - 递归&amp;指针深度解析（拓展）</a><time datetime="2025-05-03T04:09:47.000Z" title="发表于 2025-05-03 12:09:47">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/accd.html" title="L8.1 - 位运算深度解析（拓展）">L8.1 - 位运算深度解析（拓展）</a><time datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By whystars</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Made with ❤️ by whystars</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-home"><i class="fa-solid fa-house"></i></div></div><div class="rightMenu-group rightMenu-line"><div class="rightMenu-item" id="menu-readmode"><i class="fa-solid fa-book-open"></i><span>阅读模式</span><script>document.getElementById('menu-readmode').addEventListener('click', () => {
+  const $body = document.body
+  $body.classList.toggle('read-mode')
+  if ($body.classList.contains('read-mode')) {
+    const newEle = document.createElement('button')
+    newEle.type = 'button'
+    newEle.className = 'fas fa-sign-out-alt exit-readmode'
+    $body.appendChild(newEle)
+
+    const clickFn = () => {
+      $body.classList.remove('read-mode')
+      newEle.remove()
+      newEle.removeEventListener('click', clickFn)
+    }
+
+    newEle.addEventListener('click', clickFn)
+  } else {
+    document.querySelector('.exit-readmode').remove()
+  }
+  RemoveRightMenu();
+})</script></div><div class="rightMenu-item" id="menu-darkmode"><i class="fa-solid fa-moon"></i><span>昼夜切换</span></div><div class="rightMenu-item" id="menu-copylink"><i class="fa-solid fa-link"></i><span>复制本文地址</span><script>document.getElementById('menu-copylink').addEventListener('click', function(e) {
+navigator.clipboard.writeText(window.location.href);
+btf.snackbarShow('复制成功！');
+RemoveRightMenu();
+e.preventDefault();
+});</script></div><div class="rightMenu-item" id="menu-copy"><i class="fa-solid fa-copyright"></i><span>版权声明</span><script>document.getElementById('menu-copy').addEventListener('click', function() {
+  location.href = '/agreement/';
+});</script></div></div></div><div id="rightmenu-mask" onclick="RemoveRightMenu()"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: 'Ov23liIto6rA7Ifnm15x',
+      clientSecret: '89f5322ee0583b8714ec451825932c9b7b053e7a',
+      repo: 'comments',
+      owner: 'whystars',
+      admin: ['whystars'],
+      id: '1957d4b7aa352fa65b8b80d5c776dcc3',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await getCSS('https://unpkg.com/gitalk/dist/gitalk.css')
+      await getScript('https://unpkg.com/gitalk/dist/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><div class="aplayer no-destroy" data-id="1433584979" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><script src="https://unpkg.com/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

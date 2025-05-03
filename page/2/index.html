@@ -1,0 +1,577 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>whystars - blog</title><meta name="author" content="whystars"><meta name="copyright" content="whystars"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="whystars&#39; blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="whystars">
+<meta property="og:url" content="https://whystars.cn/page/2/index.html">
+<meta property="og:site_name" content="whystars">
+<meta property="og:description" content="whystars&#39; blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://whystars.cn/img/favicon.png">
+<meta property="article:author" content="whystars">
+<meta property="article:tag" content="C++,学生">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://whystars.cn/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://whystars.cn/page/2/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: whystars","link":"链接: ","source":"来源: whystars","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'whystars',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-05-03 14:13:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/mainColor/heoMainColor.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/fonts/hack.css"><link rel="stylesheet" href="/fonts/titlefont.css"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/XMx86jzlQw0brz3/latest/iconfont.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="whystars" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img" style="background-image:url(/img/favicon.png);background-repeat: no-repeat;background-position:center;"></div><div class="loading-image-dot"></div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = 'auto';
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/why_change.css"/><script src="https://unpkg.com/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/favicon.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="whystars"><span class="site-name">whystars</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></nav><div id="site-info"><h1 id="site-title">whystars</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/bba5.html" title="L4 - 条件分支与逻辑运算">L4 - 条件分支与逻辑运算</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:40.000Z" title="发表于 2025-05-03 12:09:40">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:07:38.419Z" title="更新于 2025-05-03 13:07:38">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L4 - 条件分支与逻辑运算
+🎯 教学目标
+
+掌握多条件判断的嵌套写法
+理解逻辑运算符的优先级规则
+能处理复合条件判断问题
+应用短路运算优化代码逻辑
+
+🔑 核心知识点
+多条件判断模板
+12345678// 三分支温度预警系统if(temp &gt; 35)&#123;    cout &lt;&lt; &quot;红色高温预警&quot;;&#125; else if(temp &gt; 30)&#123;    cout &lt;&lt; &quot;橙色高温预警&quot;;&#125; else &#123;    cout &lt;&lt; &quot;正常温度范围&quot;;&#125;
+执行流程解析：
+
+严格顺序检查条件
+首个满足条件的分支执行后立即退出
+else if本质是嵌套的if语句的语法糖
+推荐使用大括号明确作用域，避免悬空else问题
+
+逻辑运算符优先级表
+
+
+
+运算符
+描述
+优先级
+结合性
+
+
+
+
+!
+逻辑非
+3
+右到左
+
+
+&amp;&amp;
+逻辑与
+11
+左到右
+
+
+||
+逻辑或
+12
+左到右
+
+
+
+经典案例解析：
+12345if(a &gt; 5  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/f038.html" title="L3 - 一维数组实战">L3 - 一维数组实战</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:39.000Z" title="发表于 2025-05-03 12:09:39">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T06:04:17.595Z" title="更新于 2025-05-03 14:04:17">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L3 - 一维数组实战
+🎯 教学目标
+
+掌握数组的声明与初始化
+熟练使用循环处理数组元素
+实现基础统计算法
+
+🔑 核心知识点
+数组声明与初始化
+1234// 标准声明方式int scores[5];          // 声明包含5个整数的数组（未初始化）float temps[7] = &#123;&#125;;    // 全部初始化为0.0char vowels[] = &#123;&#x27;a&#x27;,&#x27;e&#x27;,&#x27;i&#x27;,&#x27;o&#x27;,&#x27;u&#x27;&#125;; // 自动推导长度
+关键要点：
+
+
+内存分配原理：
+
+连续内存块分配
+每个元素占数据类型对应字节数（int通常4字节）
+数组总大小 = 元素个数 × sizeof(元素类型)
+
+
+
+初始化规则：
+123int arr1[3];            // 值随机（危险！）int arr2[3] = &#123;1,2&#125;;    // [1,2,0]int arr3[] = &#123;9,8,7&#125;;   // 长度自动推导为 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/e3b2.html" title="L2 - for循环与嵌套逻辑">L2 - for循环与嵌套逻辑</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:38.000Z" title="发表于 2025-05-03 12:09:38">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:07:31.903Z" title="更新于 2025-05-03 13:07:31">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L2 - for循环与嵌套逻辑
+🎯 教学目标
+
+掌握for循环执行流程
+理解循环变量的作用域
+能处理双重循环嵌套问题
+
+🔑 核心知识点
+基础for循环结构
+1234for(int i=0; i&lt;10; i++)&#123;    cout &lt;&lt; i &lt;&lt; &quot; &quot;;&#125;// 输出：0 1 2 3 4 5 6 7 8 9
+执行流程详解：
+
+初始化阶段：int i=0（仅在循环开始时执行一次）
+条件判断：i&lt;10（每次循环前检查）
+
+若为true → 执行循环体
+若为false → 退出循环
+
+
+迭代操作：i++（每次循环体执行完毕后执行）
+循环周期：1初始化 → 判断 → 执行体 → 迭代 → 判断 → ...
+
+
+变量作用域规则：
+
+循环变量i仅在for语句块内有效
+若在循环外访问i将导致编译错误
+可通过外部声明扩展作用域：123int i; // 声明在外部for(i=0; i&lt;10; i++)&#123; /*...*/ &#125;cout &lt;&lt; i; // 此时i=10
+
+
+嵌套循环模板
+123 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/e7e1.html" title="L1 - C++程序基础架构">L1 - C++程序基础架构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:37.000Z" title="发表于 2025-05-03 12:09:37">2025-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:07:28.857Z" title="更新于 2025-05-03 13:07:28">2025-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="content">L1 - C++程序基础架构
+🎯 教学目标
+
+理解C++程序的基本组成结构
+掌握控制台输入输出的标准写法
+学会声明和使用整型变量
+
+🔑 核心知识点
+程序骨架三要素
+1234567#include &lt;iostream&gt;  // 1.包含标准输入输出库using namespace std; // 2.使用标准命名空间int main() &#123;         // 3.主函数入口    // 程序逻辑代码    return 0;        // 返回操作系统状态值&#125;
+详细讲解：
+
+
+#include &lt;iostream&gt;：
+
+预处理器指令，将输入输出流库的内容包含到当前文件
+必须在使用cout或cin前包含
+类似数学公式中的&quot;=&quot;符号，告诉编译器去哪里找相关定义
+
+
+
+using namespace std：
+
+命名空间用于避免名称冲突
+std包含所有标准库组件（cout、cin、endl等）
+替代写法：std::cout &lt;&lt; &quot;Hello&quot;;（适用于大型项目）
+
+
+
+main()函 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2307715541.html" title="流浪地球2（4K、HD高清）">流浪地球2（4K、HD高清）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-10T06:48:01.000Z" title="发表于 2023-06-10 14:48:01">2023-06-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:54.809Z" title="更新于 2024-02-02 14:57:54">2024-02-02</time></span></div><div class="content">流浪地球2 电影资源
+简介
+《流浪地球2》是由郭帆执导，吴京、李雪健、沙溢、宁理、王智、朱颜曼滋领衔主演、刘德华特别演出的科幻灾难电影。该片于2023年1月22日在中国大陆及北美地区同步上映；2023年2月9日在中国港澳地区上映。
+该片以提出计划将建造1万座行星发动机的时代为故事背景，讲述了“太阳危机”即将来袭，世界陷入一片恐慌之中，万座行星发动机正在建造中，人类将面临末日灾难与生命存续的双重挑战故事。
+2023年6月2日消息，《流浪地球》官方宣布，《流浪地球 2》将在维也纳进行联合国特别放映。
+下载链接
+huang1111云盘 下载链接
+阿里云盘（比较麻烦） 下载链接
+阿里云盘下载之后 查看教程
+阿里云盘下载后观看教程
+
+请下载这两个文件后打开 “阿里云盘文件伪装&amp;解除v1.1”
+选择 “下载后解析”
+点击 “选择文件”
+最后点击 “点击解析” 按钮，等待完成即可
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/848889115.html" title="struct结构体">struct结构体</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-28T09:07:14.000Z" title="发表于 2023-05-28 17:07:14">2023-05-28</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-12T07:26:15.117Z" title="更新于 2024-05-12 15:26:15">2024-05-12</time></span></div><div class="content">struct结构体
+结构
+1234567891011#include &lt;bits/stdc++.h&gt;using namespace std;struct 结构体名称&#123;    结构体变量;&#125;;//一定要注意分号int main()&#123;    你的结构体名称 变量名;    变量名.你的结构体内的变量名称或结构体内的函数名称;//调用    return 0;&#125;
+示例
+12345678910111213141516171819#include &lt;bits/stdc++.h&gt;using namespace std;struct student&#123;    string name;    int h,w;&#125;;//一定要注意分号int main()&#123;    student stu[10];    for(int i=0;i&lt;10;i++)&#123;        cin&gt;&gt;stu[i].name&gt;&gt;stu[i].h&gt;&gt;stu[i].w;        //依次输入姓 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1122620100.html" title="映像劫持">映像劫持</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-27T06:06:33.000Z" title="发表于 2023-05-27 14:06:33">2023-05-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:48.115Z" title="更新于 2024-02-02 14:57:48">2024-02-02</time></span></div><div class="content">映像劫持
+要点
+
+劫持路径:
+计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options
+
+添加劫持程序
+
+添加项，重命名为劫持程序名称
+
+设置劫持程序
+
+添加Debugger字符串
+
+添加想运行的程序
+
+将字符串的值设为你想运行的程序（绝对路径）,可以留空
+
+完成
+
+然后再运行被劫持的程序，你就会发现打开了其他程序，而没有打开被劫持的程序
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/599784019.html" title="c++高精度减法">c++高精度减法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-27T05:58:52.000Z" title="发表于 2023-05-27 13:58:52">2023-05-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:42.553Z" title="更新于 2024-02-02 14:57:42">2024-02-02</time></span></div><div class="content">高精度减法
+123456789101112131415161718192021222324252627282930313233#include &lt;bits/stdc++.h&gt;#include &lt;string&gt;using namespace std;int a[10001],b[10001],c[10001];int main()&#123;	string sta,stb;	int la,lb,lc,i,j,g=0;	cin&gt;&gt;sta&gt;&gt;stb;	la=sta.size();	lb=stb.size();	if(la&lt;lb || (la==lb &amp;&amp; sta&lt;stb))&#123;		swap(sta,stb);		swap(la,lb);		cout&lt;&lt;&quot;-&quot;;	&#125;	lc=la;	for(i=0;i&lt;la;i++) a[i]=sta[la-i-1]-&#x27;0&#x27;;	for(i=0;i&lt;lb;i++) b[i]=stb[lb-i-1]-&#x27 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/65824488.html" title="dfs回溯框架">dfs回溯框架</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-27T05:50:37.000Z" title="发表于 2023-05-27 13:50:37">2023-05-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-02T06:57:30.920Z" title="更新于 2024-02-02 14:57:30">2024-02-02</time></span></div><div class="content">dfs回溯框架
+1234567891011121314151617181920212223#include &lt;bits/stdc++.h&gt;...using namesapce std;...void dfs(参数)&#123;    for(范围)&#123;        if(找到解或结束了)&#123;            ...        &#125;        else if(在范围内)&#123;            做标记;            dfs(传参);            抹除标记;        &#125;    &#125;&#125;int main()&#123;    ...    dfs(传参);    ...    return 0;&#125;
+
+&quot;. . .&quot;为其他代码部分
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/840339277.html" title="博客的创建与撰写">博客的创建与撰写</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-26T12:44:29.000Z" title="发表于 2023-05-26 20:44:29">2023-05-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T04:08:10.620Z" title="更新于 2025-05-03 12:08:10">2025-05-03</time></span></div><div class="content">博客的创建与撰写
+blog问题解决
+
+butterfly出现页面出现extends includes/layout.pug...的解决方法:
+
+1npm install --save hexo-renderer-jade hexo-generator-feed hexo-generator-sitemap hexo-browsersync hexo-generator-archive
+
+推送到GitHub Pages
+
+
+首先安装hexo-deployer-git：
+
+1npm install hexo-deployer-git --save
+
+然后修改blog目录下的_config.yml 文件末尾的 Deploy 部分，修改成如下：
+
+1234deploy:  type: &#x27;git&#x27;  repository: git@github.com:用户名/用户名.github.io.git  branch: main
+
+完成后运行 hexo d 将网站上传部署到 GitHub Pages。
+
+
+blog技巧
+制作blog流程：
+
+生成初始blog页面
+
+1hexo in ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/favicon.png'" alt="avatar"/></div><div class="author-info__name">whystars</div><div class="author-info__description">whystars' blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whystars"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到whystars的blog！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b0e0.html" title="L8.5 - 数学专题：杨辉三角的编程妙用（拓展）">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）</a><time datetime="2025-05-03T04:09:50.000Z" title="发表于 2025-05-03 12:09:50">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/49c9.html" title="L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）</a><time datetime="2025-05-03T04:09:49.000Z" title="发表于 2025-05-03 12:09:49">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4487.html" title="L8.3 - 堆栈内存分配深度解析（拓展）">L8.3 - 堆栈内存分配深度解析（拓展）</a><time datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/555f.html" title="L8.2 - 递归&amp;指针深度解析（拓展）">L8.2 - 递归&amp;指针深度解析（拓展）</a><time datetime="2025-05-03T04:09:47.000Z" title="发表于 2025-05-03 12:09:47">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/accd.html" title="L8.1 - 位运算深度解析（拓展）">L8.1 - 位运算深度解析（拓展）</a><time datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/"><span class="card-category-list-name">知识体系</span><span class="card-category-list-count">14</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/"><span class="card-category-list-name">Level 1</span><span class="card-category-list-count">14</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%B3%A8%E5%86%8C%E8%A1%A8/" style="font-size: 1.15em; color: rgb(66, 110, 38)">注册表</a><a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.15em; color: rgb(11, 61, 33)">技术</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.15em; color: rgb(185, 47, 72)">博客</a><a href="/tags/dfs/" style="font-size: 1.15em; color: rgb(21, 32, 148)">dfs</a><a href="/tags/c/" style="font-size: 1.45em; color: rgb(170, 147, 188)">c++</a><a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 1.15em; color: rgb(52, 153, 157)">电影</a><a href="/tags/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/" style="font-size: 1.3em; color: rgb(190, 137, 116)">知识体系</a><a href="/tags/Level-1/" style="font-size: 1.3em; color: rgb(175, 90, 7)">Level 1</a><a href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" style="font-size: 1.15em; color: rgb(149, 79, 66)">高精度</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">2025年05月</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">2023年06月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">2023年05月</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-05-25T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">18.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-05-03T06:13:14.615Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By whystars</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Made with ❤️ by whystars</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-home"><i class="fa-solid fa-house"></i></div></div><div class="rightMenu-group rightMenu-line"><div class="rightMenu-item" id="menu-readmode"><i class="fa-solid fa-book-open"></i><span>阅读模式</span><script>document.getElementById('menu-readmode').addEventListener('click', () => {
+  const $body = document.body
+  $body.classList.toggle('read-mode')
+  if ($body.classList.contains('read-mode')) {
+    const newEle = document.createElement('button')
+    newEle.type = 'button'
+    newEle.className = 'fas fa-sign-out-alt exit-readmode'
+    $body.appendChild(newEle)
+
+    const clickFn = () => {
+      $body.classList.remove('read-mode')
+      newEle.remove()
+      newEle.removeEventListener('click', clickFn)
+    }
+
+    newEle.addEventListener('click', clickFn)
+  } else {
+    document.querySelector('.exit-readmode').remove()
+  }
+  RemoveRightMenu();
+})</script></div><div class="rightMenu-item" id="menu-darkmode"><i class="fa-solid fa-moon"></i><span>昼夜切换</span></div><div class="rightMenu-item" id="menu-copylink"><i class="fa-solid fa-link"></i><span>复制本文地址</span><script>document.getElementById('menu-copylink').addEventListener('click', function(e) {
+navigator.clipboard.writeText(window.location.href);
+btf.snackbarShow('复制成功！');
+RemoveRightMenu();
+e.preventDefault();
+});</script></div><div class="rightMenu-item" id="menu-copy"><i class="fa-solid fa-copyright"></i><span>版权声明</span><script>document.getElementById('menu-copy').addEventListener('click', function() {
+  location.href = '/agreement/';
+});</script></div></div></div><div id="rightmenu-mask" onclick="RemoveRightMenu()"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://unpkg.com/typed.js/dist/typed.umd.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
+    jinrishici.load(result =>{
+      if (true) {
+        const sub = []
+        const content = result.data.content
+        sub.unshift(content)
+        typedJSFn.init(sub)
+      } else {
+        document.getElementById('subtitle').textContent = result.data.content
+      }
+    })
+  })
+}
+typedJSFn.run(subtitleType)
+</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><div class="aplayer no-destroy" data-id="1433584979" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><script src="https://unpkg.com/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

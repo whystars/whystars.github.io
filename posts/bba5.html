@@ -1,0 +1,611 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>L4 - 条件分支与逻辑运算 | whystars</title><meta name="author" content="whystars"><meta name="copyright" content="whystars"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="L4 - 条件分支与逻辑运算 🎯 教学目标  掌握多条件判断的嵌套写法 理解逻辑运算符的优先级规则 能处理复合条件判断问题 应用短路运算优化代码逻辑  🔑 核心知识点 多条件判断模板 12345678&#x2F;&#x2F; 三分支温度预警系统if(temp &gt; 35)&amp;#123;    cout &lt;&lt; &quot;红色高温预警&quot;;&amp;#125; else if(temp &gt; 30">
+<meta property="og:type" content="article">
+<meta property="og:title" content="L4 - 条件分支与逻辑运算">
+<meta property="og:url" content="https://whystars.cn/posts/bba5.html">
+<meta property="og:site_name" content="whystars">
+<meta property="og:description" content="L4 - 条件分支与逻辑运算 🎯 教学目标  掌握多条件判断的嵌套写法 理解逻辑运算符的优先级规则 能处理复合条件判断问题 应用短路运算优化代码逻辑  🔑 核心知识点 多条件判断模板 12345678&#x2F;&#x2F; 三分支温度预警系统if(temp &gt; 35)&amp;#123;    cout &lt;&lt; &quot;红色高温预警&quot;;&amp;#125; else if(temp &gt; 30">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://whystars.cn/img/favicon.png">
+<meta property="article:published_time" content="2025-05-03T04:09:40.000Z">
+<meta property="article:modified_time" content="2025-05-03T05:07:38.419Z">
+<meta property="article:author" content="whystars">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="Level 1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://whystars.cn/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://whystars.cn/posts/bba5.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: whystars","link":"链接: ","source":"来源: whystars","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'L4 - 条件分支与逻辑运算',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-03 13:07:38'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/mainColor/heoMainColor.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/fonts/hack.css"><link rel="stylesheet" href="/fonts/titlefont.css"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/XMx86jzlQw0brz3/latest/iconfont.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="whystars" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img" style="background-image:url(/img/favicon.png);background-repeat: no-repeat;background-position:center;"></div><div class="loading-image-dot"></div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = 'auto';
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/why_change.css"/><script src="https://unpkg.com/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/favicon.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="whystars"><span class="site-name">whystars</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fas fa-copyright"></i><span> 版权声明</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></nav><div id="post-info"><h1 class="post-title">L4 - 条件分支与逻辑运算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-03T04:09:40.000Z" title="发表于 2025-05-03 12:09:40">2025-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-03T05:07:38.419Z" title="更新于 2025-05-03 13:07:38">2025-05-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/Level-1/">Level 1</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="L4 - 条件分支与逻辑运算"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img gist" style="background-image: url(/img/default.png)"></div><article class="post-content" id="article-container"><h1>L4 - 条件分支与逻辑运算</h1>
+<h2 id="🎯-教学目标">🎯 教学目标</h2>
+<ol>
+<li>掌握多条件判断的嵌套写法</li>
+<li>理解逻辑运算符的优先级规则</li>
+<li>能处理复合条件判断问题</li>
+<li>应用短路运算优化代码逻辑</li>
+</ol>
+<h2 id="🔑-核心知识点">🔑 核心知识点</h2>
+<h3 id="多条件判断模板">多条件判断模板</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 三分支温度预警系统</span></span><br><span class="line"><span class="keyword">if</span>(temp &gt; <span class="number">35</span>)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;红色高温预警&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(temp &gt; <span class="number">30</span>)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;橙色高温预警&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;正常温度范围&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>执行流程解析：</strong></p>
+<ol>
+<li>严格顺序检查条件</li>
+<li>首个满足条件的分支执行后立即退出</li>
+<li><code>else if</code>本质是嵌套的<code>if</code>语句的语法糖</li>
+<li>推荐使用大括号明确作用域，避免悬空else问题</li>
+</ol>
+<h3 id="逻辑运算符优先级表">逻辑运算符优先级表</h3>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>优先级</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!</td>
+<td>逻辑非</td>
+<td>3</td>
+<td>右到左</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+<td>11</td>
+<td>左到右</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或</td>
+<td>12</td>
+<td>左到右</td>
+</tr>
+</tbody>
+</table>
+<p><strong>经典案例解析：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a &gt; <span class="number">5</span> || b &lt; <span class="number">3</span> &amp;&amp; c == <span class="number">10</span>) </span><br><span class="line"><span class="comment">// 等效于：a&gt;5 || (b&lt;3 &amp;&amp; c==10)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>((x != <span class="number">0</span>) &amp;&amp; (y/x &gt; <span class="number">0.5</span>)) </span><br><span class="line"><span class="comment">// 安全除法：利用短路特性避免除零错误</span></span><br></pre></td></tr></table></figure>
+<h2 id="⚡-短路运算深度解析">⚡ 短路运算深度解析</h2>
+<h3 id="短路机制示意图">短路机制示意图</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A &amp;&amp; B → 当A为<span class="literal">false</span>时，B不执行</span><br><span class="line">A || B → 当A为<span class="literal">true</span>时，B不执行</span><br></pre></td></tr></table></figure>
+<p><strong>实际应用案例：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安全指针访问</span></span><br><span class="line"><span class="keyword">if</span>(p != <span class="literal">nullptr</span> &amp;&amp; p-&gt;<span class="built_in">isValid</span>())&#123;</span><br><span class="line">    <span class="comment">// 安全访问指针成员</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 高效循环终止</span></span><br><span class="line"><span class="keyword">while</span>(index &lt; SIZE &amp;&amp; array[index] != target)&#123;</span><br><span class="line">    index++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="性能优化实验">性能优化实验</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">funcA</span><span class="params">()</span> </span>&#123; <span class="comment">/* 耗时操作 */</span> &#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">funcB</span><span class="params">()</span> </span>&#123; <span class="comment">/* 简单判断 */</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 优化前：总执行funcA()</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">funcA</span>() || <span class="built_in">funcB</span>()) &#123;...&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 优化后：funcB()可能跳过funcA()</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">funcB</span>() || <span class="built_in">funcA</span>()) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="🕹️-互动案例系统">🕹️ 互动案例系统</h2>
+<h3 id="闰年判断器（ISO标准）">闰年判断器（ISO标准）</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isLeapYear</span><span class="params">(<span class="type">int</span> year)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (year%<span class="number">4</span> == <span class="number">0</span> &amp;&amp; year%<span class="number">100</span> != <span class="number">0</span>) || (year%<span class="number">400</span> == <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>测试用例集：</strong></p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>预期结果</th>
+<th>测试要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2000</td>
+<td>true</td>
+<td>世纪闰年</td>
+</tr>
+<tr>
+<td>1900</td>
+<td>false</td>
+<td>世纪非闰年</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>true</td>
+<td>普通闰年</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>false</td>
+<td>平年</td>
+</tr>
+</tbody>
+</table>
+<h3 id="成绩等级转换系统">成绩等级转换系统</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">char</span> <span class="title">getGrade</span><span class="params">(<span class="type">int</span> score)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(score &gt;= <span class="number">90</span>) <span class="keyword">return</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span>(score &gt;= <span class="number">80</span>) <span class="keyword">return</span> <span class="string">&#x27;B&#x27;</span>; <span class="comment">// 隐含score&lt;90</span></span><br><span class="line">    <span class="keyword">if</span>(score &gt;= <span class="number">70</span>) <span class="keyword">return</span> <span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;D&#x27;</span>; <span class="comment">// 低于70分的情况</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>条件覆盖分析：</strong></p>
+<ul>
+<li>边界值测试：89,90,0,100</li>
+<li>非法值处理：负分、超过100分</li>
+<li>数据类型验证：浮点数输入处理</li>
+</ul>
+<h2 id="💣-易错点详解">💣 易错点详解</h2>
+<h3 id="运算符优先级陷阱">运算符优先级陷阱</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a &amp; <span class="number">1</span> == <span class="number">0</span>) <span class="comment">// 实际解析：a &amp; (1 == 0)</span></span><br><span class="line"><span class="comment">// 正确写法：(a &amp; 1) == 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(x &lt; <span class="number">5</span> || <span class="number">10</span> &lt; x &lt; <span class="number">20</span>) <span class="comment">// 错误逻辑！</span></span><br><span class="line"><span class="comment">// 正确表达：(x &lt;5 || (x&gt;10 &amp;&amp; x&lt;20))</span></span><br></pre></td></tr></table></figure>
+<h3 id="浮点数比较危机">浮点数比较危机</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> d = <span class="number">0.1</span> + <span class="number">0.2</span>;</span><br><span class="line"><span class="keyword">if</span>(d == <span class="number">0.3</span>) <span class="comment">// 永远为false！</span></span><br><span class="line"><span class="comment">// 正确方法：fabs(d - 0.3) &lt; 1e-6</span></span><br></pre></td></tr></table></figure>
+<h3 id="悬空else问题">悬空else问题</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a &gt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span>(b &gt; <span class="number">0</span>)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;A&quot;</span>;</span><br><span class="line"><span class="keyword">else</span>  <span class="comment">// 实际匹配内层if</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;B&quot;</span>;</span><br><span class="line"><span class="comment">// 通过大括号明确归属关系</span></span><br></pre></td></tr></table></figure>
+<h2 id="🛠️-调试技巧">🛠️ 调试技巧</h2>
+<h3 id="条件追踪法">条件追踪法</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> DEBUG</span></span><br><span class="line">   (cout &lt;&lt; <span class="string">&quot;检查条件1:&quot;</span> &lt;&lt; cond1 &lt;&lt; endl, cond1) &amp;&amp;</span><br><span class="line">   (cout &lt;&lt; <span class="string">&quot;检查条件2:&quot;</span> &lt;&lt; cond2 &lt;&lt; endl, cond2)</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">   cond1 &amp;&amp; cond2</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">)&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="真值表验证法">真值表验证法</h3>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>A&amp;&amp;B</th>
+<th>A||B</th>
+<th>!A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li>验证复杂逻辑表达式的所有可能情况</li>
+<li>生成测试用例确保条件覆盖</li>
+</ul>
+<hr>
+<h2 id="🎓-教学提示">🎓 教学提示</h2>
+<h3 id="个人所得税计算器实现要点">个人所得税计算器实现要点</h3>
+<ol>
+<li><strong>税率区间处理：</strong></li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> tax = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(income &gt; <span class="number">30000</span>) &#123;</span><br><span class="line">    tax += (income<span class="number">-30000</span>)*<span class="number">0.2</span>;</span><br><span class="line">    income = <span class="number">30000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(income &gt; <span class="number">17000</span>) &#123;</span><br><span class="line">    tax += (income<span class="number">-17000</span>)*<span class="number">0.1</span>;</span><br><span class="line">    income = <span class="number">17000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...后续区间类似处理</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>精度处理方法：</strong></li>
+</ol>
+<ul>
+<li>使用<code>round(tax*100)/100</code>进行四舍五入</li>
+<li>输出时使用<code>fixed &lt;&lt; setprecision(2)</code></li>
+</ul>
+<h3 id="电梯调度系统逻辑框架">电梯调度系统逻辑框架</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> current = <span class="number">5</span>; <span class="comment">// 当前楼层</span></span><br><span class="line"><span class="type">int</span> target = <span class="number">8</span>;  <span class="comment">// 目标楼层</span></span><br><span class="line"></span><br><span class="line">string direction = (target &gt; current) ? <span class="string">&quot;上行&quot;</span> : <span class="string">&quot;下行&quot;</span>;</span><br><span class="line"><span class="type">int</span> floors = <span class="built_in">abs</span>(target - current);</span><br><span class="line"><span class="type">int</span> time = floors * <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;方向：&quot;</span> &lt;&lt; direction &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;预计耗时：&quot;</span> &lt;&lt; time &lt;&lt; <span class="string">&quot;秒&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 超载检测</span></span><br><span class="line"><span class="keyword">if</span>(totalWeight &gt; <span class="number">1000</span>)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;警告！超载&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="🏋️-配套练习">🏋️ 配套练习</h2>
+<ol>
+<li>
+<p><strong>智能闰年检测</strong></p>
+<ul>
+<li>输入：年份（1-9999）</li>
+<li>输出：
+<ul>
+<li>闰年判断结果</li>
+<li>带世纪年说明（如2000是世纪闰年）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>三角形检察官</strong></p>
+<ul>
+<li>输入：三个边长</li>
+<li>输出：
+<ul>
+<li>类型（普通/等腰/等边）</li>
+<li>是否直角三角形（误差&lt;0.001）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>自动售票机系统</strong></p>
+<ul>
+<li>输入：票价、投入金额</li>
+<li>输出：
+<ul>
+<li>应找零钱（优先用大面额）</li>
+<li>示例：<br>
+输入：46 100<br>
+输出：<br>
+50元×1<br>
+1元×4</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>个人所得税计算器</strong></p>
+<ul>
+<li>规则：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0-5000：0%</span><br><span class="line">5000-8000：3%</span><br><span class="line">8000-17000：10%</span><br><span class="line">17000-30000：20%</span><br></pre></td></tr></table></figure>
+</li>
+<li>输入：月收入</li>
+<li>输出：应纳税额（精确到分）</li>
+</ul>
+</li>
+<li>
+<p><strong>电梯调度系统</strong></p>
+<ul>
+<li>输入：当前楼层，目标楼层</li>
+<li>输出：
+<ul>
+<li>运行方向（上行/下行/停留）</li>
+<li>预计到达时间（每层2秒）</li>
+<li>超载检测（假设载重≤1000kg）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="本文为原创文章，著作权归whystars所有">原创</a><a class="post-copyright-title" href="https://whystars.cn/posts/bba5.html"><span>L4 - 条件分支与逻辑运算</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"></span><a class="link" href="https://whystars.cn">whystars</a></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a class="link" href="https://whystars.cn/posts/bba5.html">https://whystars.cn/posts/bba5.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">转载前请认真阅读本站 <a href="/agreement">版权协议</a>，文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" > CC BY-NC-SA 4.0 许可协议</a></span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/c/">c++</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a><a class="post-meta__tags" href="/tags/Level-1/">Level 1</a></div><div class="post_share"><div class="social-share" data-image="/img/favicon.png" data-sites="facebook,twitter,wechat,qq,weibo"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/favicon.png'" alt="avatar"/></div><div class="author-info__name">whystars</div><div class="author-info__description">whystars' blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whystars"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whystars" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:why88944@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到whystars的blog！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">L4 - 条件分支与逻辑运算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%95%99%E5%AD%A6%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">🎯 教学目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%91-%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">🔑 核心知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.2.1.</span> <span class="toc-text">多条件判断模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E8%A1%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">逻辑运算符优先级表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A1-%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">⚡ 短路运算深度解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%AD%E8%B7%AF%E6%9C%BA%E5%88%B6%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.3.1.</span> <span class="toc-text">短路机制示意图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text">性能优化实验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%95%B9%EF%B8%8F-%E4%BA%92%E5%8A%A8%E6%A1%88%E4%BE%8B%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.4.</span> <span class="toc-text">🕹️ 互动案例系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%B0%E5%B9%B4%E5%88%A4%E6%96%AD%E5%99%A8%EF%BC%88ISO%E6%A0%87%E5%87%86%EF%BC%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">闰年判断器（ISO标准）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E7%BB%A9%E7%AD%89%E7%BA%A7%E8%BD%AC%E6%8D%A2%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.4.2.</span> <span class="toc-text">成绩等级转换系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A3-%E6%98%93%E9%94%99%E7%82%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">💣 易错点详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E9%99%B7%E9%98%B1"><span class="toc-number">1.5.1.</span> <span class="toc-text">运算符优先级陷阱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E6%AF%94%E8%BE%83%E5%8D%B1%E6%9C%BA"><span class="toc-number">1.5.2.</span> <span class="toc-text">浮点数比较危机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%82%AC%E7%A9%BAelse%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.3.</span> <span class="toc-text">悬空else问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.6.</span> <span class="toc-text">🛠️ 调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%BF%BD%E8%B8%AA%E6%B3%95"><span class="toc-number">1.6.1.</span> <span class="toc-text">条件追踪法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E5%80%BC%E8%A1%A8%E9%AA%8C%E8%AF%81%E6%B3%95"><span class="toc-number">1.6.2.</span> <span class="toc-text">真值表验证法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%93-%E6%95%99%E5%AD%A6%E6%8F%90%E7%A4%BA"><span class="toc-number">1.7.</span> <span class="toc-text">🎓 教学提示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0%E8%A6%81%E7%82%B9"><span class="toc-number">1.7.1.</span> <span class="toc-text">个人所得税计算器实现要点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%A2%AF%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6"><span class="toc-number">1.7.2.</span> <span class="toc-text">电梯调度系统逻辑框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8F%8B%EF%B8%8F-%E9%85%8D%E5%A5%97%E7%BB%83%E4%B9%A0"><span class="toc-number">1.8.</span> <span class="toc-text">🏋️ 配套练习</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b0e0.html" title="L8.5 - 数学专题：杨辉三角的编程妙用（拓展）">L8.5 - 数学专题：杨辉三角的编程妙用（拓展）</a><time datetime="2025-05-03T04:09:50.000Z" title="发表于 2025-05-03 12:09:50">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/49c9.html" title="L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）">L8.4 - 二分查找、排列组合与质数筛法深度解析（拓展）</a><time datetime="2025-05-03T04:09:49.000Z" title="发表于 2025-05-03 12:09:49">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4487.html" title="L8.3 - 堆栈内存分配深度解析（拓展）">L8.3 - 堆栈内存分配深度解析（拓展）</a><time datetime="2025-05-03T04:09:48.000Z" title="发表于 2025-05-03 12:09:48">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/555f.html" title="L8.2 - 递归&amp;指针深度解析（拓展）">L8.2 - 递归&amp;指针深度解析（拓展）</a><time datetime="2025-05-03T04:09:47.000Z" title="发表于 2025-05-03 12:09:47">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/accd.html" title="L8.1 - 位运算深度解析（拓展）">L8.1 - 位运算深度解析（拓展）</a><time datetime="2025-05-03T04:09:46.000Z" title="发表于 2025-05-03 12:09:46">2025-05-03</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By whystars</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Made with ❤️ by whystars</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-home"><i class="fa-solid fa-house"></i></div></div><div class="rightMenu-group rightMenu-line"><div class="rightMenu-item" id="menu-readmode"><i class="fa-solid fa-book-open"></i><span>阅读模式</span><script>document.getElementById('menu-readmode').addEventListener('click', () => {
+  const $body = document.body
+  $body.classList.toggle('read-mode')
+  if ($body.classList.contains('read-mode')) {
+    const newEle = document.createElement('button')
+    newEle.type = 'button'
+    newEle.className = 'fas fa-sign-out-alt exit-readmode'
+    $body.appendChild(newEle)
+
+    const clickFn = () => {
+      $body.classList.remove('read-mode')
+      newEle.remove()
+      newEle.removeEventListener('click', clickFn)
+    }
+
+    newEle.addEventListener('click', clickFn)
+  } else {
+    document.querySelector('.exit-readmode').remove()
+  }
+  RemoveRightMenu();
+})</script></div><div class="rightMenu-item" id="menu-darkmode"><i class="fa-solid fa-moon"></i><span>昼夜切换</span></div><div class="rightMenu-item" id="menu-copylink"><i class="fa-solid fa-link"></i><span>复制本文地址</span><script>document.getElementById('menu-copylink').addEventListener('click', function(e) {
+navigator.clipboard.writeText(window.location.href);
+btf.snackbarShow('复制成功！');
+RemoveRightMenu();
+e.preventDefault();
+});</script></div><div class="rightMenu-item" id="menu-copy"><i class="fa-solid fa-copyright"></i><span>版权声明</span><script>document.getElementById('menu-copy').addEventListener('click', function() {
+  location.href = '/agreement/';
+});</script></div></div></div><div id="rightmenu-mask" onclick="RemoveRightMenu()"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: 'Ov23liIto6rA7Ifnm15x',
+      clientSecret: '89f5322ee0583b8714ec451825932c9b7b053e7a',
+      repo: 'comments',
+      owner: 'whystars',
+      admin: ['whystars'],
+      id: '558ac42d859ac236cbda72a1e791fe64',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await getCSS('https://unpkg.com/gitalk/dist/gitalk.css')
+      await getScript('https://unpkg.com/gitalk/dist/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><div class="aplayer no-destroy" data-id="1433584979" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><script src="https://unpkg.com/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

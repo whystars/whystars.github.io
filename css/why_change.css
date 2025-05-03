@@ -431,7 +431,7 @@ width: 64%;
 
 /*个人信息美化*/
 #aside-content>.card-widget.card-info {
-  background: #fff url(/img/image-1.png) top 36% center no-repeat;
+  background: #fff url(/img/default.jpg) top 30% left 40% no-repeat;
   position: relative;
 }
 #aside-content .card-info #card-info-btn {
@@ -486,7 +486,7 @@ width: 64%;
 /* 文章顶部其他信息 */
 #post-meta>div {
   text-align: center;
-  color:white
+  color:black;
 }
 /* 图标数字间距 */
 #post-info #post-meta .post-meta-icon {
